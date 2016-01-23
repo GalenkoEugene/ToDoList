@@ -1,0 +1,22 @@
+<% @projects.each do |project| %>
+<table class="table-hover">
+  <thead>
+  <!--PROJECTS-->
+    <tr onselectstart="return false" onmousedown="return false">
+      <th class="done">CAL</th>
+      <th colspan="2"><%= project.name %></th>
+      <%= hidden_field_tag(:projects, project.id) %>
+      <th><%= link_to 'Edit', edit_project_path(project) %></th>
+      <th><%= link_to 'Del', project, method: :delete, data: { confirm: 'Are you sure?' } %></th>
+    </tr>
+  </thead>
+
+  <%= render 'form_for_add_task' %> 
+  <tbody id="table">
+    <%= render 'form_for_filling_project_by_task' %> 
+  </tbody>
+</table>
+<br><br><br>
+<% end %>
+
+<button id ="addTDL" type="button" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Создать новый проэкт"><%= link_to 'Add ToDoList', new_project_path %></button>
