@@ -1,23 +1,17 @@
 <% @projects.each do |project| %>
-<table>
-  <caption>Table</caption>
-  
+<table class="table-hover">
   <thead>
   <!--PROJECTS-->
     <tr onselectstart="return false" onmousedown="return false">
       <th class="done">CAL</th>
       <th colspan="2"><%= project.name %></th>
+      <%= hidden_field_tag(:projects, project.id) %>
       <th><%= link_to 'Edit', edit_project_path(project) %></th>
       <th><%= link_to 'Del', project, method: :delete, data: { confirm: 'Are you sure?' } %></th>
     </tr>
-    
   </thead>
-<!--ADDED TASK********************************************-->
-<%= form_for(@task) do |f| %>
-  <% if @task.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
 
+<<<<<<< HEAD
       <ul>
       <% @task.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -54,3 +48,12 @@
 </table>
 <br><br><br>
 <% end %>
+=======
+  <%= render 'form_for_add_task' %> 
+  <%= render 'form_for_filling_project_by_task' %> 
+</table>
+<br><br><br>
+<% end %>
+
+<button id ="addTDL" type="button" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Создать новый проэкт"><%= link_to 'Add ToDoList', new_project_path %></button>
+>>>>>>> ae33930b9a5201330e77ea1e51902e399fa16194

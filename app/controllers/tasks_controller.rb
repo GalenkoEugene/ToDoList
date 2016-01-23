@@ -72,6 +72,8 @@ class TasksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
+      
+      #params[:project_id] = Project.find(8)
       params.require(:task).permit(:name, :status, :project_id, :rating)
     end
 end

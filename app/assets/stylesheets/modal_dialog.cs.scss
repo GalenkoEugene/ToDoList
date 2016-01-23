@@ -1,0 +1,63 @@
+.modalDialog {
+	position: fixed; 
+	font-family: Arial, Helvetica, sans-serif;
+	top: 0; /*положение затемнения при открытии формы*/
+	right: 0; /*положение затемнения при открытии формы*/
+	bottom: 0; /*положение затемнения при открытии формы*/
+	left: 0; /*положение затемнения при открытии формы*/
+	background: rgba(0,0,0,0.5); /*цвет затемнения при открытии формы*/
+	z-index: 99999; /*Любые позиционированные элементы на веб-странице 
+	могут накладываться друг на друга в определенном порядке, 
+	имитируя тем самым третье измерение, перпендикулярное экрану. 
+	Каждый элемент может находиться как ниже, так и выше других объектов веб-страницы, 
+	их размещением по z-оси и управляет z-index. 
+	Это свойство работает только для элементов, у которых значение position 
+	задано как absolute, fixed или relative.
+Чем больше значение, тем выше находится элемент по сравнению с теми элементами, у которых оно меньше. 
+При равном значении z-index, на переднем плане находится тот элемент, который в коде HTML описан ниже.
+	*/
+
+	-webkit-transition: opacity 400ms ease-in;
+	-moz-transition: opacity 400ms ease-in;
+	transition: opacity 400ms ease-in;
+	display: none;
+	pointer-events: none;
+}
+.modalDialog:target {
+	display: block;
+	pointer-events: auto; /*pointer-events, но оно позволяет контролировать как элементы будут 
+		реагировать на нажатие кнопки мыши. Мы устанавливаем значение его значение для класса modalDialog, 
+	так как ссылка не должна реагировать на нажатие кнопки мыши когда активен псевдо класс “:target”.*/
+}
+
+.modalDialog > div {
+	width: 450px;
+	position: relative;
+	margin: 10% auto;
+	padding: 5px 20px 13px 20px;
+	border-radius: 10px;
+	background: #fff;
+	background: -moz-linear-gradient(#fff, #999);
+	background: -webkit-linear-gradient(#fff, #999);
+	background: -o-linear-gradient(#fff, #999);
+}
+.close {
+	background: #606061;
+	color: #FFFFFF;
+	line-height: 25px;
+	position: absolute;
+	right: -12px;
+	text-align: center;
+	top: -10px;
+	width: 24px;
+	text-decoration: none;
+	font-weight: bold;
+	-webkit-border-radius: 12px;
+	-moz-border-radius: 12px;
+	border-radius: 12px;
+	-moz-box-shadow: 1px 1px 3px #000;
+	-webkit-box-shadow: 1px 1px 3px #000;
+	box-shadow: 1px 1px 3px #000;
+}
+
+.close:hover { background: #00d9ff; }

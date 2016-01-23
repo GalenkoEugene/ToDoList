@@ -11,20 +11,3 @@
  *= require_self
  *= require_tree .
  */
-
-
- /*header*/
- ul.nav li{
- 	display: inline; /* Отображать как строчный элемент */
-    margin-right: 5px; /* Отступ слева */
-    border: 1px solid #000; /* Рамка вокруг текста */
-    padding: 3px; /* Поля вокруг текста */
- }
-
-/*footer*/
-ul.footer li{
-	display: inline; /* Отображать как строчный элемент */
-	border: 1px solid #000; /* Рамка вокруг текста */
-    padding: 3px; /* Поля вокруг текста */
-	
-}
