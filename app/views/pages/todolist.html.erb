@@ -32,6 +32,7 @@
             <%= f.text_field :name %>
             <!--<input type="text" placeholder="Start typing here to create a task">-->
         </th>
+        <%= hidden_field_tag(:project_id, project.id) %>
         <th id="submit">
         <%= f.submit %>
            <!-- <input type="submit" value="Add Task">-->

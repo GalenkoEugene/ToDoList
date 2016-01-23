@@ -16,6 +16,7 @@ class ProjectsController < ApplicationController
   # GET /projects/new
   def new
     @project = Project.new
+    flash[:success] = "New Project was succesful created!"
   end
 
   # GET /projects/1/edit

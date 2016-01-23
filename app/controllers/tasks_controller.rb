@@ -5,6 +5,7 @@ class TasksController < ApplicationController
   # GET /tasks.json
   def index
     @tasks = Task.all
+    
   end
 
   # GET /tasks/1
@@ -59,6 +60,7 @@ class TasksController < ApplicationController
     respond_to do |format|
       format.html { redirect_to todolist_url }
       format.json { head :no_content }
+      format.js   { render :layout => false }  #demo
     end
   end
 
