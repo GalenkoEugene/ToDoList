@@ -12,6 +12,7 @@
   </thead>
 
   <%= render 'form_for_add_task' %> 
+
   <tbody id="table">
     <%= render 'form_for_filling_project_by_task' %> 
   </tbody>
@@ -20,3 +21,9 @@
 <% end %>
 
 <button id ="addTDL" type="button" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Создать новый проэкт"><%= link_to 'Add ToDoList', new_project_path %></button>
+<%= link_to 'Add ToDoList', new_project_path %>
+
+<script type="text/javascript">
+  $('.move').click(function(event){$('.move').html('Привет');});
+
+</script>
