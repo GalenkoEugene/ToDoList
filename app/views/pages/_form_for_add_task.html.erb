@@ -13,14 +13,15 @@
   <% end %>
 
     <tr>
-        <th class="done" style="width: 2px">+</th>  
-        <th colspan="3" class="projects">
-            <%= f.text_field :name %>
-            <!--<input type="text" placeholder="Start typing here to create a task">-->
-        </th>
-        <th id="submit">
-        <%= f.submit %>
-           <!-- <input type="submit" value="Add Task">-->
+        <th class="done">+</th>
+        
+          <th colspan="4" class="projects">
+            <div class="input-append">
+              <%= f.text_field :name, :class => 'span2', placeholder: 'Start typing here to create a task...' %>
+          
+              <%= f.submit 'Add Task', :class => 'btn btn-success addTask' %>
+          </div>
         </th>
     </tr>
   <% end %>
+ 

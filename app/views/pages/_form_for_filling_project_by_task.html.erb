@@ -1,9 +1,11 @@
     <% @tasks.each do |task| %>
-      <tr>
-        <td><%= check_box_tag(:done) %></td>
+      <tr class="forchack">
+        <td><%= check_box_tag 'done', 'yes', false, class: 'checked' %></td>  
         <td class="tasks"><%= task.name %></td>
-        <td class="move control" onselectstart="return false" onmousedown="return false">move</td>
-        <td><%= link_to 'Edit', edit_task_path(task) %></td>
-        <td><%= link_to 'Del', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+       
+        <td class="move control" onselectstart="return false" onmousedown="return false"><span class="icon-move" aria-hidden="true"></span>|</td>
+        <td><%= link_to '', edit_task_path(task), class: "icon-pencil" %></td>
+        <td>|<%= link_to '', task, class: "icon-trash", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        
       </tr>
     <% end %>
