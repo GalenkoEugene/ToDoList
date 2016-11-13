@@ -6,20 +6,20 @@ table {
                 margin: auto; /* Выравниваем таблицу по центру окна  */
                 width: 800px !important;
 font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
-font-size: 14px;
+font-size: 14px!important;
 }
-thead tr th { background: linear-gradient(to top, #1641ac, #1C52D9);}//градиент
-tbody tr td {background: #FFFFFF;}
+thead tr th { background: linear-gradient(to top, #1641ac, #1C52D9)!important;}//градиент
+tbody tr td {background: #FFFFFF!important;}
 
-tr:last-child td:first-child {border-radius: 0 0 0 10px;}
-tr:last-child td:last-child {border-radius: 0 0 10px 0;}
-tr td:last-child {border-right: none;}
+tr:last-child td:first-child {border-radius: 0 0 0 10px!important;}
+tr:last-child td:last-child {border-radius: 0 0 10px 0!important;}
+tr td:last-child {border-right: none!important;}
 tr{
-	position: relative;
+	position: relative!important;
 }
 .move { 
-cursor: move;
-border-left: 1px solid #D6D6D6;
+cursor: move!important;
+border-left: 1px solid #D6D6D6!important;
 
  }
 
@@ -51,10 +51,10 @@ padding: 5px 0px;
 	}
 }
 th.done{ //style for adding New Task in Project
-        padding-top: 13px;
-        padding-left: 11px;
-        padding-right: 4px;
-        font-size: 250%;
+        padding-top: 0px!important;
+        padding-left: 11px!important;
+        padding-right: 4px!important;
+        font-size: 250%!important;
         color: green;
 }
 
@@ -63,8 +63,8 @@ margin-left: 48%;
 position: absolute;
 bottom: 50px;
 }
-.contrpl{width: 100px;}
-.stroked{text-decoration: line-through;}
-.span2{ width: 600px !important;}
-.addTask{width: 150px !important;}
-.input-append{border: 0; margin: 0; padding: 0;}
+.contrpl{width: 100px!important;}
+.stroked{text-decoration: line-through!important;}
+.span2{ width: 600px !important; color: grey;}
+.addTask{width: 120px !important;}
+.input-append{border: 0!important; margin: 0!important; padding: 0!important;}
