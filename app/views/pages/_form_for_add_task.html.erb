@@ -16,12 +16,12 @@
         <th class="done">+</th>
         
           <th colspan="4" class="projects">
-            <div class="input-append">
-              <%= f.text_field :name, :class => 'span2', placeholder: 'Start typing here to create a task...' %>
-          
-              <%= f.submit 'Add Task', :class => 'btn btn-success addTask' %>
-          </div>
+            <div class="input-group">
+                <%= f.text_field :name, :class => 'form-control', placeholder: 'Start typing here to create a task...' %>
+              <span class="input-group-btn">
+                <%= f.submit 'Add Task', :class => 'btn btn-success addTask' %>
+              </span>
+            </div>
         </th>
     </tr>
   <% end %>
- 
