@@ -5,6 +5,9 @@
     <tr onselectstart="return false" onmousedown="return false">
       <th class="done"><span class=""></span></th>
       <th colspan="2"><%= project.name %></th>
+
+      <% @project_id = project.id %> <!-- Add Task to direct Project -->
+      
       <%= hidden_field_tag(:projects, project.id) %>
       <th><%= link_to '', edit_project_path(project), class: "glyphicon glyphicon-pencil" %></th>
       <th><%= link_to '', project, class: "glyphicon glyphicon-trash", method: :delete, data: { confirm: 'Are you sure?' } %></th>
@@ -21,11 +24,6 @@
 
 <% end %>
 
+<p> user_id = <%= @user_id %></p>
 
 <%= link_to 'Add ToDoList', new_project_path, class: "btn btn-success", id: "addTDL", title: "Создать новый проэкт" %>
-
-<script type="text/javascript">
-  //$('td.move').parent('tr').addClass('styless');
-
-</script>
-

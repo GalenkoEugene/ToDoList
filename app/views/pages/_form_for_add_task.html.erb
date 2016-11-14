@@ -18,6 +18,7 @@
           <th colspan="4" class="projects">
             <div class="input-group">
                 <%= f.text_field :name, :class => 'form-control', placeholder: 'Start typing here to create a task...' %>
+                <%= f.hidden_field :project_id, value: @project_id %> <!-- Add Task to direct Project -->
               <span class="input-group-btn">
                 <%= f.submit 'Add Task', :class => 'btn btn-success addTask' %>
               </span>

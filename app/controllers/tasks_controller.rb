@@ -16,7 +16,7 @@ class TasksController < ApplicationController
   # GET /tasks/new
   def new
     @task = Task.new
-
+    @project_id = ''
   end
 
   # GET /tasks/1/edit

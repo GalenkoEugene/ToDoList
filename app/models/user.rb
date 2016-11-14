@@ -7,4 +7,6 @@ class User < ApplicationRecord
          :rememberable,
          :trackable, 
          :validatable
+
+  has_many :projects, dependent: :destroy
 end
