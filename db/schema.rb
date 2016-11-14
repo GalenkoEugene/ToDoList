@@ -13,13 +13,13 @@
 ActiveRecord::Schema.define(version: 20161113182512) do
 
   create_table "projects", force: :cascade do |t|
-    t.string   "name",       limit: 255
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "tasks", force: :cascade do |t|
-    t.string   "name",       limit: 255
+    t.string   "name"
     t.boolean  "status"
     t.integer  "project_id"
     t.integer  "rating"
