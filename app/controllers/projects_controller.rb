@@ -21,6 +21,7 @@ class ProjectsController < ApplicationController
 
   # GET /projects/1/edit
   def edit
+    @user_id = User.find_by(email: current_user.email).id
   end
 
   # POST /projects
