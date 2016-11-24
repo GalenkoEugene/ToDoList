@@ -14,12 +14,3 @@
 //= require bootstrap-sprockets
 //= require jquery_ujs
 //= require_tree .
-$(document).ready(function() {
-    $(".checked").click(function(e) {
-      $(this).closest(".forchack").toggleClass('stroked');
-    });
-    
-    $(".icon-move").click(function(){
-    $(this).closest(".forchack").sortable();
-    });
-});

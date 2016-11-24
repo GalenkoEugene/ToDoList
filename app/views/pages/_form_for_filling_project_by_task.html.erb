@@ -1,7 +1,7 @@
     <% @sort_tasks = @tasks.where(project_id: @project_id) %>
     <% @sort_tasks.each do |task| %>
       <tr class="forchack">
-        <td><%= check_box_tag 'done', 'yes', false, class: 'checked' %></td>  
+        <td><%= check_box_tag 'done', task.status, task.status, class: 'checked' %></td>  
         <td class="tasks"><%= task.name %></td>
        
         <td class="move control" onselectstart="return false" onmousedown="return false"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span>|</td>
