@@ -5,7 +5,8 @@ ToDoList::Application.routes.draw do
  # get "pages/todolist"
   resources :tasks
   resources :projects
-
+  #resources :pages
+  #get 'pages/editTaskStatus'
   
 match '/todolist', to: 'pages#todolist', via: 'get'
   # The priority is based upon order of creation: first created -> highest priority.

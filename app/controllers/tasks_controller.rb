@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:show, :edit, :update, :destroy]
+  before_action :set_task, only: [:show, :edit, :update, :destroy, :editTaskStatus]
 
   # GET /tasks
   # GET /tasks.json
@@ -53,6 +53,10 @@ class TasksController < ApplicationController
     end
   end
 
+  def editTaskStatus
+    @task.update(status: task_params[:value])
+  end 
+
   # DELETE /tasks/1
   # DELETE /tasks/1.json
   def destroy
@@ -73,6 +77,6 @@ class TasksController < ApplicationController
     def task_params
       
       #params[:project_id] = Project.find(8)
-      params.require(:task).permit(:name, :status, :project_id, :rating)
+      params.require(:task).permit(:name, :status, :project_id, :rating, :id, :value)
     end
 end

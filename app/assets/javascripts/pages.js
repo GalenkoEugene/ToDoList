@@ -2,12 +2,26 @@ $(document).ready(function() {
 	var chackBoxTag = $(".checked");
 
     chackBoxTag.click(function(e) {
-       	//console.log($(this).attr('value'));
+        var taskId = $(this).attr('id');
+    //console.log($(this).attr('value'));
     	if ($(this).attr('value') == 'false') {
             /*отправить Ajax, 
               сохранить в базу task.status как 'true', 
               изменить значение value='true', 
               "Задание ВЫПОЛНЕННО"*/
+              $.ajax({
+                      method: "GET",
+                      url: "/tasks/editTaskStatus",
+                      data: { id: taskId, value: true}
+                    })
+                      .done(function( msg ) {
+                        alert( "Data Saved: " + msg );
+                      })
+                        .error(function (a) {
+                          alert('error');
+                        });
+
+
     	  $(this).closest(".forchack").toggleClass('stroked');
           $(this).val(true);
           return true;
@@ -42,7 +56,7 @@ $(document).ready(function() {
     	});
     };
 
-
+ 
     function removeStrokeForTask(){ /*remove stroked style*/
 
     };
