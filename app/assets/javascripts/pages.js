@@ -2,7 +2,9 @@ $(document).ready(function() {
 	var chackBoxTag = $(".checked");
 
     chackBoxTag.click(function(e) {
+       // e.preventDefault();
         var taskId = $(this).attr('id');
+        var thisChackBox = $(this);
     //console.log($(this).attr('value'));
     	if ($(this).attr('value') == 'false') {
             /*отправить Ajax, 
@@ -10,28 +12,55 @@ $(document).ready(function() {
               изменить значение value='true', 
               "Задание ВЫПОЛНЕННО"*/
               $.ajax({
-                      method: "GET",
-                      url: "/tasks/editTaskStatus",
-                      data: { id: taskId, value: true}
+                      method: "POST",
+                      url: "/tasks/editTaskStatus/",
+                      data: {id: taskId, value: true},
+                      success: function(data) { 
+                      console.log(data);
+                       
+                    }
+                      /*dataType: "json"*/
                     })
                       .done(function( msg ) {
-                        alert( "Data Saved: " + msg );
+                        thisChackBox.closest(".forchack").toggleClass('stroked');
+                        thisChackBox.val(true);
+                       // thisChackBox.attr("checked", true);
+                        /*alert( "Data Saved: " + msg );*/
                       })
                         .error(function (a) {
+                          thisChackBox.val(false);
+                          thisChackBox.attr("checked", false);
                           alert('error');
                         });
-
-
-    	  $(this).closest(".forchack").toggleClass('stroked');
-          $(this).val(true);
           return true;
     	}else{
               /*изменить value='false', 
               task.status = 'false', 
               "Задание НЕ сделано"*/
-    		$(this).closest(".forchack").removeClass('stroked');
-            $(this).val(false);
-    		alert("Removed");
+              $.ajax({
+                      method: "POST",
+                      url: "/tasks/editTaskStatus/",
+                      data: {id: taskId, value: false},
+                      success: function(data) { 
+                      console.log(data);
+                       
+                    }
+                      /*dataType: "json"*/
+                    })
+                      .done(function( msg ) {
+                        thisChackBox.closest(".forchack").removeClass('stroked');
+                        thisChackBox.val(false);
+                      //  thisChackBox.attr("checked", false);
+                        /*alert( "Data Saved: " + msg );*/
+                      })
+                        .error(function (a) {
+                          thisChackBox.val(true);
+                          thisChackBox.attr("checked", true);
+                          alert('error');
+                        });
+    		//$(this).closest(".forchack").removeClass('stroked');
+        //$(this).val(false);
+    		//alert("Removed");
     	 }
       
     });

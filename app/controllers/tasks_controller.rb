@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:show, :edit, :update, :destroy, :editTaskStatus]
+  before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   # GET /tasks
   # GET /tasks.json
@@ -53,10 +53,6 @@ class TasksController < ApplicationController
     end
   end
 
-  def editTaskStatus
-    @task.update(status: task_params[:value])
-  end 
-
   # DELETE /tasks/1
   # DELETE /tasks/1.json
   def destroy
@@ -66,6 +62,10 @@ class TasksController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def editTaskStatus
+     Task.find_by(id: params[:id]).update(status: params[:value])
+  end 
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -77,6 +77,9 @@ class TasksController < ApplicationController
     def task_params
       
       #params[:project_id] = Project.find(8)
-      params.require(:task).permit(:name, :status, :project_id, :rating, :id, :value)
+      params.require(:task).permit(:name, :status, :project_id, :rating, :value)
     end
 end
+  #def editTaskStatus
+  #  Tasks.find_by(id: task_params[:id]).update(status: task_params[:value])
+  #end 

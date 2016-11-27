@@ -7,7 +7,7 @@
         <th colspan="2"><%= project.name %></th>
 
         <% @project_id = project.id %> <!-- Add Task to direct Project -->
-        <p>---*** <%= @project_id %> ***---</p>
+
         <%= hidden_field_tag(:projects, project.id) %>
         <th><%= link_to '', edit_project_path(project), class: "glyphicon glyphicon-pencil" %></th>
         <th><%= link_to '', project, class: "glyphicon glyphicon-trash", method: :delete, data: { confirm: 'Are you sure?' } %></th>
@@ -23,7 +23,4 @@
 <br><br><br>
 
 <% end %>
-
-<p> user_id = <%= @user_id %></p>
-<p> <%= @project_id %> </p>
 <%= link_to 'Add ToDoList', new_project_path, class: "btn btn-success", id: "addTDL", title: "Создать новый проэкт" %>
