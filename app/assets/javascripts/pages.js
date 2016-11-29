@@ -29,7 +29,7 @@ $(document).ready(function() {
                       })
                         .error(function (a) {
                           thisChackBox.val(false);
-                          thisChackBox.attr("checked", false);
+                          thisChackBox.prop("checked", false);
                           alert('error');
                         });
           return true;
@@ -55,7 +55,7 @@ $(document).ready(function() {
                       })
                         .error(function (a) {
                           thisChackBox.val(true);
-                          thisChackBox.attr("checked", true);
+                          thisChackBox.prop("checked", true);
                           alert('error');
                         });
     		//$(this).closest(".forchack").removeClass('stroked');
