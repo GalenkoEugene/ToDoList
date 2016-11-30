@@ -18,7 +18,7 @@
 @import "bootstrap";
 
 /* universal */
-
+/*
 html {
   overflow-y: scroll;
 }
@@ -41,7 +41,7 @@ textarea {
     margin-bottom: 10px;
   }
 }
-
+*/
 
 #logo {
   float: left;
@@ -63,7 +63,7 @@ textarea {
 
 footer {
 	position: absolute;
-    bottom: 0;
+   
     width: 80%;
     left: 10%;
  	height: 25px;
@@ -88,3 +88,5 @@ footer {
     }
   }
 }
+
+.stroked{text-decoration: line-through;}

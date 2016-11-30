@@ -78,20 +78,35 @@ $(document).ready(function() {
     	  if (elem.getAttribute('value') == 'true') {
             //console.log($(this));
             $(this).prop( "checked", true ); /*add checked to chack_box_tag*/
-    	  	$(this).closest(".forchack").toggleClass('stroked');
+    	  	$(this).closest(".forchack").find(".tasks").toggleClass('stroked');
             
           }
 
     	});
     };
 
- 
-    function removeStrokeForTask(){ /*remove stroked style*/
-
-    };
-
-
     strokeCheckedTasks(chackBoxTag); /*set chaced and strocked for all tasks*/   
+
+
+  $(".edit_project_name").click(function(e){  /* edit project name with Ajax */
+    var project_id = $(this).prop('id');
+    var project_title = $("#project_name_" + project_id);
+    var project_title_text = project_title.text();
+    //project_title.hide();
+    //project_title.append("<input class='form-control' value='Edit Task' placeholder='Start typing here to edit a task...' type='text' > <span class='input-group-btn'> <input type='submit' value='Save changes' class='btn btn-danger' data-disable-with='Edit Task' > </span>"); 
+    //project_title.html(" <div class='input-group'> <input class='form-control' placeholder='Start typing here to edit a task...' type='text'> <span class='input-group-btn'> <input type='submit' value='Edit Task' class='btn btn-success' data-disable-with='Edit Task'> </span> ");
+    //project_title.html("<input class='form-control' value='Edit Task' placeholder='Start typing here to edit a task...' type='text' > <span class='input-group-btn'> <input type='submit' value='Save changes' class='btn btn-danger' data-disable-with='Edit Task' > </span>");
+    
+      project_title.html(" <div class='input-group'> <input class='form-control' placeholder='Start typing here to edit a task...' type='text'> <span class='input-group-btn'> <input type='submit' value='Edit Task' class='btn btn-success' data-disable-with='Edit Task'> </span> ");
+     /* $.ajax({
+        complete:function(request){},
+        data:'address='+ $('#address').val(),
+        dataType:'script',
+        type:'get',
+        url: '[ROUTE TO ACTION]' 
+      })*/
+  });
+
 });
 
 

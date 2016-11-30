@@ -64,7 +64,7 @@ position: absolute;
 bottom: 50px;
 }
 .contrpl{width: 100px!important;}
-.stroked{text-decoration: line-through!important;}
+.stroked{text-decoration: line-through;}
 .addTask{width: 120px !important;}
 .input-append{border: 0!important; margin: 0!important; padding: 0!important;}
 .hi{color: grey; position: absolute; margin-top: 17px!important; margin-left: 55px;}
