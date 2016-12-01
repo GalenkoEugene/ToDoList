@@ -66,9 +66,9 @@ $(document).ready(function() {
       
     });
     
-    $(".icon-move").click(function(){
-    $(this).closest(".forchack").sortable();
-    });
+    //$(".icon-move").click(function(){
+    //$(this).closest(".forchack").sortable();
+    //});
 
     function strokeCheckedTasks(e){		//strocked//
     	e.each(function(i,elem) {
@@ -88,18 +88,20 @@ $(document).ready(function() {
 
     strokeCheckedTasks(chackBoxTag); /*set chaced and strocked for all tasks*/   
 
+
+
 var old_project_name = "";
 var project_id = null;
 var project_title = null;
-
+var edit_project_links = $(".glyphicon.glyphicon-pencil.edit_project_name");
   $(".edit_project_name").click(function(e){  
 
     project_id = $(this).prop('id');
     project_title = $("#project_name_" + project_id);/*select by  project_name_id*/
-    old_project_name = project_title.text();
+    old_project_name = project_title.text();   
+    project_title.html(" <div class='input-group edit_project_name'> <input class='form-control edit_project_name_field' placeholder='Start typing here to edit a project name...' type='text'> <span class='input-group-btn'> <input type='submit' value='Edit Task' class='btn btn-danger edit_project_name_send_ajax' data-disable-with='Edit Task'> </span> ");     
+    edit_project_links.not($(this)).unbind('click'); /*disable ckick on other 'edit_project_name'*/
     
-    project_title.html(" <div class='input-group edit_project_name'> <input class='form-control edit_project_name_field' placeholder='Start typing here to edit a project name...' type='text'> <span class='input-group-btn'> <input type='submit' value='Edit Task' class='btn btn-danger edit_project_name_send_ajax' data-disable-with='Edit Task'> </span> ");
-     
     });
 
 
@@ -119,6 +121,7 @@ var project_title = null;
                     })
                       .done(function( msg ) {
                         project_title.text(new_name_of_project);
+                        edit_project_links.on("click");
                       })
                         .error(function (a) {
                           project_title.text(old_project_name);
