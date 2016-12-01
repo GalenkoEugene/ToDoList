@@ -5,6 +5,7 @@ $(document).ready(function() {
        // e.preventDefault();
         var taskId = $(this).attr('id');
         var thisChackBox = $(this);
+        var task_object = thisChackBox.closest("tr.forchack").find("td.tasks");
     //console.log($(this).attr('value'));
     	if ($(this).attr('value') == 'false') {
             /*отправить Ajax, 
@@ -22,7 +23,7 @@ $(document).ready(function() {
                       /*dataType: "json"*/
                     })
                       .done(function( msg ) {
-                        thisChackBox.closest(".forchack").toggleClass('stroked');
+                        task_object.toggleClass('stroked');
                         thisChackBox.val(true);
                        // thisChackBox.attr("checked", true);
                         /*alert( "Data Saved: " + msg );*/
@@ -48,7 +49,7 @@ $(document).ready(function() {
                       /*dataType: "json"*/
                     })
                       .done(function( msg ) {
-                        thisChackBox.closest(".forchack").removeClass('stroked');
+                        task_object.removeClass('stroked');
                         thisChackBox.val(false);
                       //  thisChackBox.attr("checked", false);
                         /*alert( "Data Saved: " + msg );*/
@@ -87,26 +88,43 @@ $(document).ready(function() {
 
     strokeCheckedTasks(chackBoxTag); /*set chaced and strocked for all tasks*/   
 
+var old_project_name = "";
+var project_id = null;
+var project_title = null;
 
-  $(".edit_project_name").click(function(e){  /* edit project name with Ajax */
-    var project_id = $(this).prop('id');
-    var project_title = $("#project_name_" + project_id);
-    var project_title_text = project_title.text();
-    //project_title.hide();
-    //project_title.append("<input class='form-control' value='Edit Task' placeholder='Start typing here to edit a task...' type='text' > <span class='input-group-btn'> <input type='submit' value='Save changes' class='btn btn-danger' data-disable-with='Edit Task' > </span>"); 
-    //project_title.html(" <div class='input-group'> <input class='form-control' placeholder='Start typing here to edit a task...' type='text'> <span class='input-group-btn'> <input type='submit' value='Edit Task' class='btn btn-success' data-disable-with='Edit Task'> </span> ");
-    //project_title.html("<input class='form-control' value='Edit Task' placeholder='Start typing here to edit a task...' type='text' > <span class='input-group-btn'> <input type='submit' value='Save changes' class='btn btn-danger' data-disable-with='Edit Task' > </span>");
+  $(".edit_project_name").click(function(e){  
+
+    project_id = $(this).prop('id');
+    project_title = $("#project_name_" + project_id);/*select by  project_name_id*/
+    old_project_name = project_title.text();
     
-      project_title.html(" <div class='input-group'> <input class='form-control' placeholder='Start typing here to edit a task...' type='text'> <span class='input-group-btn'> <input type='submit' value='Edit Task' class='btn btn-success' data-disable-with='Edit Task'> </span> ");
-     /* $.ajax({
-        complete:function(request){},
-        data:'address='+ $('#address').val(),
-        dataType:'script',
-        type:'get',
-        url: '[ROUTE TO ACTION]' 
-      })*/
+    project_title.html(" <div class='input-group edit_project_name'> <input class='form-control edit_project_name_field' placeholder='Start typing here to edit a project name...' type='text'> <span class='input-group-btn'> <input type='submit' value='Edit Task' class='btn btn-danger edit_project_name_send_ajax' data-disable-with='Edit Task'> </span> ");
+     
+    });
+
+
+  $(document).on("click", ".edit_project_name_send_ajax", function(e){              /* edit project name with Ajax */
+    var new_name_of_project = $(this).parents().find("input.form-control.edit_project_name_field").val(); 
+    console.log(new_name_of_project + project_id);
+    
+              $.ajax({
+                      method: "POST",
+                      url: "/projects/editProjectName/",
+                      data: {id: project_id, name: new_name_of_project},
+                      success: function(data) { 
+                      console.log(data);
+                       
+                    }
+                      
+                    })
+                      .done(function( msg ) {
+                        project_title.text(new_name_of_project);
+                      })
+                        .error(function (a) {
+                          project_title.text(old_project_name);
+                          alert('error');
+                        });
+
   });
 
-});
-
-
+ });

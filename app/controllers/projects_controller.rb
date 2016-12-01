@@ -64,6 +64,10 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def editProjectName
+    Project.find_by(id: params[:id]).update(name: params[:name])
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_project
