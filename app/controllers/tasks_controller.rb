@@ -68,7 +68,7 @@ class TasksController < ApplicationController
   end 
 
   def editTaskName
-    Task.find_by(id: params[:id]).update(name: params[:new_name_of_task])
+    Task.find_by(id: params[:id]).update(name: params[:name])
   end
 
   private
@@ -81,7 +81,7 @@ class TasksController < ApplicationController
     def task_params
       
       #params[:project_id] = Project.find(8)
-      params.require(:task).permit(:name, :status, :project_id, :rating, :value, :new_name_of_task)
+      params.require(:task).permit(:name, :status, :project_id, :rating, :value)
     end
 end
   #def editTaskStatus
