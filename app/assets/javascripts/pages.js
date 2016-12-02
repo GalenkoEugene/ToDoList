@@ -77,7 +77,7 @@ $(document).ready(function() {
     var project_id = $(this).prop('id');
     var project_title = $("#project_name_" + project_id);/*select by  project_name_id*/
     var old_project_name = project_title.text();   
-    project_title.html(" <div class='input-group edit_project_name'> <input class='form-control edit_project_name_field' placeholder='Start typing here to edit a project name...' type='text'> <span class='input-group-btn' value='"+old_project_name+"'> <input type='submit' value='Edit Task' class='btn btn-danger edit_project_name_send_ajax' id='bt_"+project_id+"' data-disable-with='Edit Task'> </span> "); 
+    project_title.html(" <div class='input-group edit_project_name'> <input class='form-control edit_project_name_field' placeholder='"+old_project_name+"' type='text'> <span class='input-group-btn' value='"+old_project_name+"'> <input type='submit' value='Edit Task' class='btn btn-danger edit_project_name_send_ajax' id='bt_"+project_id+"' data-disable-with='Edit Task'> </span> "); 
     
     });
 
@@ -104,6 +104,45 @@ $(document).ready(function() {
                       })
                         .error(function (a) {
                           current_project_title.text(old_project_name_for_current_project);
+                          alert('error');
+                        });
+
+  });
+
+
+  /*edit task in projects*/
+  $(".edit_task_bt").click(function(){
+    var this_elem = $(this);
+    var task_id = this_elem.attr('id').replace('bt_edit_id_', '');
+    var editable_field = this_elem.closest("tr.forchack").find(".tasks");
+    var editable_text = editable_field.text();
+    editable_field.html("<div class='input-group edit_task_name'> <input class='form-control edit_task_name_field' placeholder='"+editable_text+"', value='"+editable_text+"' type='text'> <span class='input-group-btn' value='"+editable_text+"'> <input type='submit' value='Save' class='btn btn-succes edit_task_name_send_ajax' id='bt_edit_id_copy_"+task_id+"'> </span>"); 
+    console.log(editable_text);
+    
+  });
+
+  $(document).on("click", ".edit_task_name_send_ajax", function(e){              /* edit task name with Ajax */
+    var new_name_of_task = $(this).parent().parent().find("input.form-control.edit_task_name_field").val();
+    var current_task_id = $(this).attr('id').replace('bt_edit_id_copy_', '');
+    current_edited_task = $(this).closest("tr.forchack").find(".tasks");
+    var old_task_name_for_current_project = $(this).parent(".input-group-btn").attr('value');
+    //console.log('new_name:'+new_name_of_project + ', pr_id:'+project_id +', current_pr_id: '+ current_project_id);
+    
+              $.ajax({
+                      method: "POST",
+                      url: "/tasks/editTaskName/",
+                      data: {id: current_task_id, name: new_name_of_task},
+                      success: function(data) { 
+                      console.log(data);
+                       
+                    }
+                      
+                    })
+                      .done(function( msg ) {
+                        current_edited_task.text(new_name_of_task);
+                      })
+                        .error(function (a) {
+                          current_edited_task.text(old_project_name_for_current_project);
                           alert('error');
                         });
 

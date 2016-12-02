@@ -67,6 +67,10 @@ class TasksController < ApplicationController
      Task.find_by(id: params[:id]).update(status: params[:value])
   end 
 
+  def editTaskName
+    Task.find_by(id: params[:id]).update(name: params[:new_name_of_task])
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_task
@@ -77,7 +81,7 @@ class TasksController < ApplicationController
     def task_params
       
       #params[:project_id] = Project.find(8)
-      params.require(:task).permit(:name, :status, :project_id, :rating, :value)
+      params.require(:task).permit(:name, :status, :project_id, :rating, :value, :new_name_of_task)
     end
 end
   #def editTaskStatus
