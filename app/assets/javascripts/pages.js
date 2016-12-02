@@ -142,7 +142,7 @@ $(document).ready(function() {
                         current_edited_task.text(new_name_of_task);
                       })
                         .error(function (a) {
-                          current_edited_task.text(old_project_name_for_current_project);
+                          current_edited_task.text(old_task_name_for_current_project);
                           alert('error');
                         });
 
