@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161125125753) do
+ActiveRecord::Schema.define(version: 20161203101729) do
 
   create_table "projects", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20161125125753) do
     t.integer  "rating"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "deadline"
   end
 
   create_table "users", force: :cascade do |t|

@@ -11,37 +11,12 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *= require bootstrap-datepicker
  *= require_tree .
  *= require_self
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
-
-/* universal */
-/*
-html {
-  overflow-y: scroll;
-}
-
-body {
-  padding-top: 60px;
-}
-
-section {
-  overflow: auto;
-}
-
-textarea {
-  resize: vertical;
-}
-
-.center {
-  text-align: center;
-  h1 {
-    margin-bottom: 10px;
-  }
-}
-*/
 
 #logo {
   float: left;
@@ -97,3 +72,28 @@ footer {
 /*thead tr th { background: linear-gradient(to top, #1462b5, #71ceef);}
 /*tbody tr td {background: #FFFFFF;}*/
 /*th.projects{font: italic bold 14px/1.5 Times, 'New Century Schoolbook', serif;} /*for projects name*/
+.control{
+  width: 15px;
+  height: 17px;
+  color: rgba(176,196,222, 0.8);
+  .glyphicon:hover{
+    cursor:pointer;
+    color: rgba(122,156,199, 0.8);
+  }
+   
+}
+.inline{display: inline;}
+
+.control_left_side{
+  width: 15px;
+  height: 17px;
+  .glyphicon{
+    vertical-align: middle;
+    color: rgba(211,211,211, 0.9);
+  }
+}
+
+a{
+  color: rgba(176,196,222, 0.8);
+  text-decoration: none; /* Убирает подчеркивание для ссылок */
+} 

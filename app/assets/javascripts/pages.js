@@ -148,4 +148,34 @@ $(document).ready(function() {
 
   });
 
+  $(".glyphicon-calendar.deadline").click(function(){
+    //console.log($(this));
+    var deadline_day = $(this).datepicker({
+      firstDay: 1, /*start week from Monday*/
+      dateFormat:'yy-mm-dd',
+      duration: "slow",
+      
+      onSelect: function(dateText, inst) { 
+        /*var dateAsString = dateText; //the first parameter of this function
+        var dateAsObject = $(this).datepicker( 'getDate' ); //the getDate method
+        console.log(dateAsObject)*/
+        
+
+        /*var theDate = new Date(Date.parse($(this).datepicker('getDate')));
+        var dateFormatted = $.datepicker.formatDate('D, MM d, yy', theDate);
+        console.log(theDate);
+        console.log('theDate: ' + theDate);
+        console.log(dateFormatted);*/
+
+
+        var date = $(this).val();
+        alert(date);
+      }
+
+
+    });
+    //alert("Deadline is: "+deadline_day);
+    //console.log(deadline_day);
+  });
+
  });
