@@ -149,10 +149,18 @@ $(document).ready(function() {
   });
 
   $(".glyphicon-calendar.deadline").click(function(){
+    var all_controls_bt = $(this).parents(".forchack").find(".control");
+    console.log(all_controls_bt);
+    all_controls_bt.not(".calendar").detach();
+    console.log(all_controls_bt);
+    all_controls_bt.after("<td class='select_deadline_field'><input type='text'></td><td class='zero'>1</td><td class='zero'></td><td class='zero'></td>");
+    //all_controls_bt.html("<td class='lol'><input type='text'></td>");
+    //$(this).parents(".deadline_input").html("<input type='text'>"); 
+
     //console.log($(this));
-    var deadline_day = $(this).datepicker({
+   /* var deadline_day = $(this).datepicker({
       firstDay: 1, /*start week from Monday*/
-      dateFormat:'yy-mm-dd',
+  /*    dateFormat:'yy-mm-dd',
       duration: "slow",
       
       onSelect: function(dateText, inst) { 
@@ -167,13 +175,13 @@ $(document).ready(function() {
         console.log('theDate: ' + theDate);
         console.log(dateFormatted);*/
 
-
+/*
         var date = $(this).val();
         alert(date);
       }
 
 
-    });
+    });*/
     //alert("Deadline is: "+deadline_day);
     //console.log(deadline_day);
   });
