@@ -116,7 +116,7 @@ $(document).ready(function() {
     var task_id = this_elem.attr('id').replace('bt_edit_id_', '');
     var editable_field = this_elem.closest("tr.forchack").find(".tasks");
     var editable_text = editable_field.text();
-    editable_field.html("<div class='input-group edit_task_name'> <input class='form-control edit_task_name_field' placeholder='"+editable_text+"', value='"+editable_text+"' type='text'> <span class='input-group-btn' value='"+editable_text+"'> <input type='submit' value='Save' class='btn btn-succes edit_task_name_send_ajax' id='bt_edit_id_copy_"+task_id+"'> </span>"); 
+    editable_field.html("<div class='input-group edit_task_name'> <input class='form-control edit_task_name_field' placeholder='"+editable_text+"', value='"+editable_text+"' type='text'> <span class='input-group-btn' value='"+editable_text+"'> <input type='submit' value='Save' class='btn btn-warning edit_task_name_send_ajax' id='bt_edit_id_copy_"+task_id+"'> </span>"); 
     console.log(editable_text);
     
   });
@@ -148,42 +148,67 @@ $(document).ready(function() {
 
   });
 
+  var for_replace_controls_bt;
+  var this_dedline_calc;
   $(".glyphicon-calendar.deadline").click(function(){
-    var all_controls_bt = $(this).parents(".forchack").find(".control");
-    console.log(all_controls_bt);
-    all_controls_bt.not(".calendar").detach();
-    console.log(all_controls_bt);
-    all_controls_bt.after("<td class='select_deadline_field'><input type='text'></td><td class='zero'>1</td><td class='zero'></td><td class='zero'></td>");
-    //all_controls_bt.html("<td class='lol'><input type='text'></td>");
-    //$(this).parents(".deadline_input").html("<input type='text'>"); 
-
-    //console.log($(this));
-   /* var deadline_day = $(this).datepicker({
-      firstDay: 1, /*start week from Monday*/
-  /*    dateFormat:'yy-mm-dd',
-      duration: "slow",
+    //clicked_on_deadline = $(this);
+    if ($(".temporary").length) {
+      return false;
+      //$(".temporary").remove();
+      //$(this).parent().after(for_replace_controls_bt);
+    }else{
+      this_dedline_calc = $(this);
+      var all_controls_bt = this_dedline_calc.parents(".forchack").find(".control");
+      for_replace_controls_bt = all_controls_bt.not(".calendar").detach();
+      all_controls_bt.after("<td colspan='4' class='temporary'><div class='input-group select_deadline_field_input'> <input class='form-control save_deadline_field datepicker' placeholder='Click here' type='text'> <span class='input-group-btn'> <input type='submit', value='S' class='btn btn-info save_deadline_send_ajax' id='bt_save_deadline'> </span></td>");
+    
       
-      onSelect: function(dateText, inst) { 
-        /*var dateAsString = dateText; //the first parameter of this function
-        var dateAsObject = $(this).datepicker( 'getDate' ); //the getDate method
-        console.log(dateAsObject)*/
+      $(".datepicker").datepicker({
         
+        format: 'dd.mm.yyyy',  // Date Format used
+        todayHighlight: true,
+        toggleActive: true,
+        daysOfWeekHighlighted: '06',
+        startDate: new Date(),
+        title: 'Take the "deadline"',
+        autoclose: true,
+        weekStart: 1
+      
+      });
 
-        /*var theDate = new Date(Date.parse($(this).datepicker('getDate')));
-        var dateFormatted = $.datepicker.formatDate('D, MM d, yy', theDate);
-        console.log(theDate);
-        console.log('theDate: ' + theDate);
-        console.log(dateFormatted);*/
+      
+    }
 
-/*
-        var date = $(this).val();
-        alert(date);
-      }
+  });
 
 
-    });*/
-    //alert("Deadline is: "+deadline_day);
-    //console.log(deadline_day);
+  $(document).on("click", ".save_deadline_send_ajax", function(e){
+    var day_of_deadline = $(this).parents(".select_deadline_field_input").find(".datepicker").val();
+    var task_id = $(this).parents(".forchack").attr('id').replace('tr_task_id_', '');
+    
+
+             $.ajax({
+                      method: "POST",
+                      url: "/tasks/setDeadline/",
+                      data: {id: task_id, deadline: day_of_deadline},
+                      success: function(data) { 
+                      console.log(data);
+                       
+                    }
+                      
+                    })
+                      .done(function( msg ) {
+                        $(".temporary").remove();
+                        this_dedline_calc.parent().after(for_replace_controls_bt);
+                        this_dedline_calc.prop('title', day_of_deadline);
+                        //this_dedline_calc.parents(".forchack").find(".tasks").child().after("123");
+                      })
+                        .error(function (a) {
+                          alert('error');
+                          $(".temporary").remove();
+                          this_dedline_calc.parent().after(for_replace_controls_bt);
+                        });
+
   });
 
  });
