@@ -10,20 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161203101729) do
+ActiveRecord::Schema.define(version: 20161205173333) do
 
   create_table "projects", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name",       limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
   end
 
   create_table "tasks", force: :cascade do |t|
-    t.string   "name"
-    t.boolean  "status",     default: false
+    t.string   "name",       limit: 255
+    t.boolean  "status",                 default: false
     t.integer  "project_id"
-    t.integer  "rating"
+    t.datetime "rating"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "deadline"

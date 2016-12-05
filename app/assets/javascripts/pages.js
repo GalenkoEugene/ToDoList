@@ -210,8 +210,11 @@ $(document).ready(function() {
 
   $(".glyphicon-arrow-down").click(function(){
     alert("down");
-    var task_id = $(this).parents(".forchack").attr('id').replace('tr_task_id_', '');
+    var current_row = $(this).parents(".forchack");
+    var task_id = current_row.attr('id').replace('tr_task_id_', '');
+    
     //найти нижний элемент и поменять с текущим
+
   });
 
   $(".glyphicon-arrow-up").click(function(){

@@ -4,8 +4,9 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
   def index
-    @projects = Project.all
-    @tasks = Task.all
+    @user_id = User.find_by(email: current_user.email).id
+    @projects = Project.where(user_id: @user_id)
+    @tasks = Task.where(project_id: @projects) #cut down extra projects, list only current user tasks
   end
 
   # GET /projects/1

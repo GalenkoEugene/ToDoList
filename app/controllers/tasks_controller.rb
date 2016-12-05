@@ -4,7 +4,9 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.json
   def index
-    @tasks = Task.all
+    @projects = Project.where(user_id: User.find_by(email: current_user.email).id) #current user projects
+
+    @tasks = Task.where(project_id: @projects)
     
   end
 
@@ -85,7 +87,7 @@ class TasksController < ApplicationController
     def task_params
       
       #params[:project_id] = Project.find(8)
-      params.require(:task).permit(:name, :status, :project_id, :rating, :value, :deadline)
+      params.require(:task).permit(:rating, :name, :status, :project_id, :value, :deadline)
     end
 end
   #def editTaskStatus

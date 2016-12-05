@@ -19,6 +19,7 @@
             <div class="input-group add_tast_to_project">
                 <%= f.text_field :name, class: 'form-control', placeholder: 'Start typing here to create a task...' %>
                 <%= f.hidden_field :project_id, value: @project_id %> <!-- Add Task to direct Project -->
+                <%= f.hidden_field :rating, value: Time.new %>
               <span class="input-group-btn">
                 <%= f.submit 'Add Task', :class => 'btn btn-success addTask' %>
               </span>
