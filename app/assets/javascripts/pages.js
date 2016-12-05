@@ -151,11 +151,10 @@ $(document).ready(function() {
   var for_replace_controls_bt;
   var this_dedline_calc;
   $(".glyphicon-calendar.deadline").click(function(){
-    //clicked_on_deadline = $(this);
+
     if ($(".temporary").length) {
       return false;
-      //$(".temporary").remove();
-      //$(this).parent().after(for_replace_controls_bt);
+
     }else{
       this_dedline_calc = $(this);
       var all_controls_bt = this_dedline_calc.parents(".forchack").find(".control");
@@ -181,8 +180,7 @@ $(document).ready(function() {
 
   });
 
-
-  $(document).on("click", ".save_deadline_send_ajax", function(e){
+  $(document).on("click", ".save_deadline_send_ajax", function(e){  /*set deadline*/
     var day_of_deadline = $(this).parents(".select_deadline_field_input").find(".datepicker").val();
     var task_id = $(this).parents(".forchack").attr('id').replace('tr_task_id_', '');
     
@@ -201,7 +199,6 @@ $(document).ready(function() {
                         $(".temporary").remove();
                         this_dedline_calc.parent().after(for_replace_controls_bt);
                         this_dedline_calc.prop('title', day_of_deadline);
-                        //this_dedline_calc.parents(".forchack").find(".tasks").child().after("123");
                       })
                         .error(function (a) {
                           alert('error');
@@ -210,5 +207,16 @@ $(document).ready(function() {
                         });
 
   });
+
+  $(".glyphicon-arrow-down").click(function(){
+    alert("down");
+    var task_id = $(this).parents(".forchack").attr('id').replace('tr_task_id_', '');
+    //найти нижний элемент и поменять с текущим
+  });
+
+  $(".glyphicon-arrow-up").click(function(){
+    alert("up");
+  });
+
 
  });
