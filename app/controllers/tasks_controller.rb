@@ -77,6 +77,14 @@ class TasksController < ApplicationController
     Task.find_by(id: params[:id]).update(deadline: params[:deadline])
   end
 
+  def swapTasks
+    rating_one = Task.find_by(id: params[:id_one]).rating
+    rating_two = Task.find_by(id: params[:id_two]).rating
+    
+    Task.find_by(id: params[:id_one]).update(rating: rating_two)
+    Task.find_by(id: params[:id_two]).update(rating: rating_one)
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_task
