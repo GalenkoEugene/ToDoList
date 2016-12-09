@@ -1,4 +1,4 @@
-<% @projects.each do |project| %>
+
 <table class="table table-hover">
     <thead>
     <!--PROJECTS-->
@@ -14,21 +14,10 @@
       </tr>
     </thead>
 
-    <%= render 'form_for_add_task' %> 
+    <%= render 'pages/form_for_add_task' %> 
 
     <tbody>
-      <%= render 'form_for_filling_project_by_task' %> 
+      
     </tbody>
   </table>
 <br><br><br>
-<% end %>
-
-
-  <div class="row">
-    <div class="col-lg-4"></div>
-    <div class="col-lg-1">
-        <% link_to 'Add ToDoList', new_project_path, remote: true, class: "btn btn-success", id: 'add_project', title: "Создать новый проэкт" %>
-        <%= render 'modal' %>
-    </div>
-  </div>
-

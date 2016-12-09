@@ -207,4 +207,29 @@ $(document).ready(function() {
   });
 
 
+  $(document).on("submit", "#new_project", function(e){  /* Create new project Ajax */
+    
+    $.ajax({
+          method: "POST",
+          url: $(this).attr('action'), /*insted of '/projects/' */ //$(this).attr('action')
+          data: $(this).serialize(),
+                  
+          success: function(h) { 
+
+            $("#new_project")[0].reset();
+            $("#new_project").find('input[type="submit"]').prop('disabled', false);
+            $('#modal_add_project').modal('hide');
+            $(".table.table-hover").first().before(h);
+          } 
+    })
+    e.preventDefault();
+
+  });
+/*
+$("#new_project").submit(function(e){
+  e.preventDefault();
+});
+*/
+
+
  });

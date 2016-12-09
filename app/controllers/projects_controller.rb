@@ -17,23 +17,24 @@ class ProjectsController < ApplicationController
   # GET /projects/new
   def new
     @project = Project.new
-    @user_id = User.find_by(email: current_user.email).id
+    #@user_id = User.find_by(email: current_user.email).id
   end
 
   # GET /projects/1/edit
   def edit
-    @user_id = User.find_by(email: current_user.email).id
+    #@user_id = User.find_by(email: current_user.email).id
   end
 
   # POST /projects
   # POST /projects.json
   def create
     @project = Project.new(project_params)
-
+    @task = Task.new
     respond_to do |format|
       if @project.save
-        format.html { redirect_to todolist_url, notice: 'Project was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @project }
+        format.html { render :partial => "pages/project_tables", :locals => { :project => @project } }   #redirect_to todolist_url, notice: 'Project was successfully created.'
+                                             # , :locals => { :project => @project }, collection: @task
+        #format.json { render action: 'show', status: :created, location: @project }
       else
         format.html { render action: 'new' }
         format.json { render json: @project.errors, status: :unprocessable_entity }
