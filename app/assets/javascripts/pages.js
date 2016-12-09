@@ -230,6 +230,27 @@ $("#new_project").submit(function(e){
   e.preventDefault();
 });
 */
+$(document).on("submit", ".new_task", function(e){  /* Add new Task to project Ajax */
+    console.log($(this));
+    var form = $(this);
+    var put_here = $(this).parents("table").find(".forchack").first();
+    $.ajax({
+          method: "POST",
+          url: $(this).attr('action'), /*insted of '/projects/' */ //$(this).attr('action')
+          data: $(this).serialize(),
+                  
+          success: function(h) {
+            //$(".new_task")[0].reset();
+            //form.find(".btn.btn-success.addTask").prop('disabled', false);
+            //console.log(form.find("input.btn.btn-success.addTask"));
+            e.prop('disabled', false);
+            //form.parents(".add_tast_to_project").find('input[type="submit"]').prop('disabled', false);
+            put_here.before(h);
+          } 
+    })
+    e.preventDefault();
+
+  });
 
 
  });

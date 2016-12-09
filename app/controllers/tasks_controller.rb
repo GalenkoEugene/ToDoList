@@ -28,12 +28,15 @@ class TasksController < ApplicationController
   # POST /tasks
   # POST /tasks.json
   def create
-    @task = Task.new(task_params)
+    @task = Task.new(task_params) 
+
+    @projects = Project.where(user_id: User.find_by(email: current_user.email).id) #current user projects
+    @tasks = Task.where(project_id: @projects)
 
     respond_to do |format|
       if @task.save
-        format.html { redirect_to todolist_url, notice: 'Task was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @task }
+        format.html { render :partial => "pages/form_for_filling_project_by_one_task", :locals => { :task => @task } } # redirect_to todolist_url, notice: 'Task was successfully created.'
+        #format.json { render action: 'show', status: :created, location: @task }
       else
         format.html { render action: 'new' }
         format.json { render json: @task.errors, status: :unprocessable_entity }
