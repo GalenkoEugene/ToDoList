@@ -68,11 +68,14 @@ footer {
 .input-group.add_tast_to_project{width: 97%;}
 .input-group.edit_project_name{width: 100%;}
 
-                                                      /*tables*/
+                                                                         /*tables*/
 thead tr th { background: linear-gradient(to top, #1462b5, #71ceef);}
-tbody tr td {background: #FFFFFF;}
+/*tbody tr td {background: #FFFFFF;}*/
+  tr:last-child td:first-child {border-radius: 0 0 0 10px!important;}
+  tr:last-child td:last-child {border-radius: 0 0 10px 0!important;}
 
 tbody tr:hover{
+ background-color: #ffe!important; /* Цвет фона */
   .control, .control>a{
     color: rgba(176,196,222, 0.8);
   }
@@ -87,6 +90,9 @@ tbody tr:hover{
     color: rgba(122,156,199, 0.8);
   }
    
+}
+tbody tr.put_task_after_me{
+  background-color: rgba( 211,211,211, 0.5)!important; /* Цвет фона */
 }
 .inline{display: inline;}
 
