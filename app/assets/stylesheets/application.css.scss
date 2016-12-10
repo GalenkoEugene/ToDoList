@@ -69,13 +69,19 @@ footer {
 .input-group.edit_project_name{width: 100%;}
 
                                                       /*tables*/
-/*thead tr th { background: linear-gradient(to top, #1462b5, #71ceef);}
-/*tbody tr td {background: #FFFFFF;}*/
+thead tr th { background: linear-gradient(to top, #1462b5, #71ceef);}
+tbody tr td {background: #FFFFFF;}
+
+tbody tr:hover{
+  .control, .control>a{
+    color: rgba(176,196,222, 0.8);
+  }
+}
 /*th.projects{font: italic bold 14px/1.5 Times, 'New Century Schoolbook', serif;} /*for projects name*/
-.control{
+.control, .control>a{
   width: 15px;
   height: 17px;
-  color: rgba(176,196,222, 0.8);
+  color: transparent;
   .glyphicon:hover{
     cursor:pointer;
     color: rgba(122,156,199, 0.8);
@@ -95,15 +101,13 @@ footer {
 
 a{
   color: rgba(176,196,222, 0.8);
-  text-decoration: none; /* Убирает подчеркивание для ссылок */
+  text-decoration: none!important; /* Убирает подчеркивание для ссылок */
 } 
 .select_deadline_field_input{
   width: 108px;
 }
-
-
-.table > thead > tr > th, .table > thead > tr > td, .table > tbody > tr > th, .table > tbody > tr > td, .table > tfoot > tr > th, .table > tfoot > tr > td{
-  vertical-align: center !important;
+td, th {
+  vertical-align: middle!important;
 }
 .save_deadline_send_ajax{
   text-shadow: 1px 1px 2px black, 0 0 1em blue;

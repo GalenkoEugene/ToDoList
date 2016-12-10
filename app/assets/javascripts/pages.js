@@ -1,7 +1,7 @@
 $(document).ready(function() {
-	var chackBoxTag = $(".checked");
+	
 
-    chackBoxTag.click(function(e) {
+    $(document).on("click", ".checked", function(e){
         var taskId = $(this).attr('id');
         var thisChackBox = $(this);
         var task_object = thisChackBox.closest("tr.forchack").find("td.tasks");
@@ -56,9 +56,10 @@ $(document).ready(function() {
     	});
     };
 
-    strokeCheckedTasks(chackBoxTag); /*set chaced and strocked for all tasks*/   
+    strokeCheckedTasks($(".checked")); /*set chaced and strocked for all tasks*/   
 
-  $(".edit_project_name").click(function(e){  /**/
+  
+  $(document).on("click", ".edit_project_name", function(e){ /* call form for edit project name */
     var project_id = $(this).prop('id');
     var project_title = $("#project_name_" + project_id);/*select by  project_name_id*/
     var old_project_name = project_title.text();   
@@ -86,8 +87,7 @@ $(document).ready(function() {
                         });
 
   });
-  
-  $(".edit_task_bt").click(function(){                                    /*edit task in projects*/
+  $(document).on("click", ".edit_task_bt", function(e){         /*edit task in projects*/
     var this_elem = $(this);
     var task_id = this_elem.attr('id').replace('bt_edit_id_', '');
     var editable_field = this_elem.closest("tr.forchack").find(".tasks");
@@ -125,9 +125,8 @@ $(document).ready(function() {
   });
 
   var for_replace_controls_bt;
-  var this_dedline_calc;
-  $(".glyphicon-calendar.deadline").click(function(){                                       /***** deadline datepicker *****/
-
+  var this_dedline_calc;                                     
+  $(document).on("click", ".glyphicon-calendar.deadline", function(){        /***** deadline datepicker *****/
     if($(".temporary").length) {
         return false;
     }else{
@@ -144,7 +143,7 @@ $(document).ready(function() {
         startDate: new Date(),
         title: 'Take the "deadline"',
         autoclose: true,
-        weekStart: 1  
+        weekStart: 1
       });
     }
 
@@ -170,8 +169,7 @@ $(document).ready(function() {
           this_dedline_calc.parent().after(for_replace_controls_bt);
         });
   });
-
-  $(".glyphicon-arrow-down, .glyphicon-arrow-up").click(function(){                                   /*****swap tasks*****/
+  $(document).on("click", ".glyphicon-arrow-down, .glyphicon-arrow-up", function(){          /*****swap tasks*****/
     var current_row = $(this).parents(".forchack");
     var task_id_one = current_row.attr('id').replace('tr_task_id_', '');
     var other_row = null;
@@ -211,7 +209,7 @@ $(document).ready(function() {
     
     $.ajax({
           method: "POST",
-          url: $(this).attr('action'), /*insted of '/projects/' */ //$(this).attr('action')
+          url: $(this).attr('action'), /*insted of '/projects/' */
           data: $(this).serialize(),
                   
           success: function(h) { 
@@ -220,32 +218,26 @@ $(document).ready(function() {
             $("#new_project").find('input[type="submit"]').prop('disabled', false);
             $('#modal_add_project').modal('hide');
             $(".table.table-hover").first().before(h);
+            $('html, body').animate({ scrollTop: 0 }, 'slow', function () { /*here will be animstion*/ });
           } 
     })
     e.preventDefault();
 
   });
-/*
-$("#new_project").submit(function(e){
-  e.preventDefault();
-});
-*/
+
 $(document).on("submit", ".new_task", function(e){  /* Add new Task to project Ajax */
-    console.log($(this));
-    var form = $(this);
-    var put_here = $(this).parents("table").find(".forchack").first();
+    var input = $(this).find('input[type="text"]');
+    var bt = $(this).find('input[type="submit"]');
+    var put_here = $(this).parents(".put_task_after_me");
     $.ajax({
           method: "POST",
-          url: $(this).attr('action'), /*insted of '/projects/' */ //$(this).attr('action')
+          url: $(this).attr('action'), /*insted of '/projects/' */
           data: $(this).serialize(),
                   
           success: function(h) {
-            //$(".new_task")[0].reset();
-            //form.find(".btn.btn-success.addTask").prop('disabled', false);
-            //console.log(form.find("input.btn.btn-success.addTask"));
-            e.prop('disabled', false);
-            //form.parents(".add_tast_to_project").find('input[type="submit"]').prop('disabled', false);
-            put_here.before(h);
+            bt.prop('disabled', false);
+            input.prop('value', '');
+            put_here.after(h);
           } 
     })
     e.preventDefault();
