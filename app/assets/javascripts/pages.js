@@ -59,10 +59,15 @@ $(document).ready(function() {
 
   
   $(document).on("click", ".edit_project_name", function(e){ /* call form for edit project name */
-    var project_id = $(this).prop('id');
-    var project_title = $("#project_name_" + project_id);/*select by  project_name_id*/
-    var old_project_name = project_title.text();   
-    project_title.html(" <div class='input-group edit_project_name'> <input class='form-control edit_project_name_field' placeholder='"+old_project_name+"', value='"+old_project_name+"' type='text'> <span class='input-group-btn' value='"+old_project_name+"'> <input type='submit' value='Edit Task' class='btn btn-danger edit_project_name_send_ajax' id='bt_"+project_id+"' data-disable-with='Edit Task'> </span> ");    
+    var already_has_input = $(this).parents("tr").find(".input-group.edit_project_name").length;
+    if(already_has_input){
+        return false;
+    }else{
+      var project_id = $(this).prop('id');
+      var project_title = $("#project_name_" + project_id);/*select by  project_name_id*/
+      var old_project_name = project_title.text();   
+      project_title.html(" <div class='input-group edit_project_name'> <input class='form-control edit_project_name_field' placeholder='"+old_project_name+"', value='"+old_project_name+"' type='text'> <span class='input-group-btn' value='"+old_project_name+"'> <input type='submit' value='Edit Task' class='btn btn-danger edit_project_name_send_ajax' id='bt_"+project_id+"' data-disable-with='Edit Task'> </span> ");    
+    }
   });
 
   $(document).on("click", ".edit_project_name_send_ajax", function(e){              /* edit project name with Ajax */
@@ -87,7 +92,7 @@ $(document).ready(function() {
 
   $(document).on("click", ".edit_task_bt", function(e){         /*edit task in projects*/
     var this_elem = $(this);
-    var already_has_input = this_elem.parents(".forchack").find(".tasks").find(".edit_task_name").length;
+    var already_has_input = this_elem.parents(".forchack").find(".edit_task_name").length;
     if(already_has_input){
         return false;
       }else{
