@@ -66,7 +66,7 @@ $(document).ready(function() {
       var project_id = $(this).prop('id');
       var project_title = $("#project_name_" + project_id);/*select by  project_name_id*/
       var old_project_name = project_title.text();   
-      project_title.html(" <div class='input-group edit_project_name'> <input class='form-control edit_project_name_field' placeholder='"+old_project_name+"', value='"+old_project_name+"' type='text'> <span class='input-group-btn' value='"+old_project_name+"'> <input type='submit' value='Edit Task' class='btn btn-danger edit_project_name_send_ajax' id='bt_"+project_id+"' data-disable-with='Edit Task'> </span> ");    
+      project_title.html(" <div class='input-group edit_project_name'> <input class='form-control edit_project_name_field' placeholder='"+old_project_name+"', value='"+old_project_name+"' maxlength='50' required='required' type='text'> <span class='input-group-btn' value='"+old_project_name+"'> <input type='submit' value='Edit Task' class='btn btn-danger edit_project_name_send_ajax' id='bt_"+project_id+"' data-disable-with='Edit Task'> </span> ");    
     }
   });
 
@@ -99,7 +99,7 @@ $(document).ready(function() {
         var task_id = this_elem.attr('id').replace('bt_edit_id_', '');
         var editable_field = this_elem.closest("tr.forchack").find(".tasks");
         var editable_text = editable_field.text();
-        editable_field.html("<div class='input-group edit_task_name'> <input class='form-control edit_task_name_field' placeholder='"+editable_text+"', value='"+editable_text+"' type='text'> <span class='input-group-btn' value='"+editable_text+"'> <input type='submit' value='Save' class='btn btn-warning edit_task_name_send_ajax' id='bt_edit_id_copy_"+task_id+"'> </span>");
+        editable_field.html("<div class='input-group edit_task_name'> <input class='form-control edit_task_name_field' placeholder='"+editable_text+"' maxlength='200' required='required' value='"+editable_text+"' type='text'> <span class='input-group-btn' value='"+editable_text+"'> <input type='submit' value='Save' class='btn btn-warning edit_task_name_send_ajax' id='bt_edit_id_copy_"+task_id+"'> </span>");
       }
   });
 
@@ -128,7 +128,8 @@ $(document).ready(function() {
   var this_dedline_calc;                                     
   $(document).on("click", ".glyphicon-calendar.deadline", function(){        /***** deadline datepicker *****/
     if($(".temporary").length) {
-        return false;
+      $(".temporary").remove();
+      this_dedline_calc.parent().after(for_replace_controls_bt);
     }else{
       this_dedline_calc = $(this);
       var all_controls_bt = this_dedline_calc.parents(".forchack").find(".control");
@@ -151,6 +152,7 @@ $(document).ready(function() {
 
   $(document).on("click", ".save_deadline_send_ajax", function(e){                                  /*****set deadline*****/
     var day_of_deadline = $(this).parents(".select_deadline_field_input").find(".datepicker").val();
+    if(day_of_deadline.length){ /*if field is not empty*/
     var task_id = $(this).parents(".forchack").attr('id').replace('tr_task_id_', '');
     
       $.ajax({
@@ -168,6 +170,9 @@ $(document).ready(function() {
           $(".temporary").remove();
           this_dedline_calc.parent().after(for_replace_controls_bt);
         });
+    }else{
+      return false; /*if field is empty*/
+    }
   });
   $(document).on("click", ".glyphicon-arrow-down, .glyphicon-arrow-up", function(){          /*****swap tasks*****/
     var current_row = $(this).parents(".forchack");
@@ -239,5 +244,35 @@ $(document).on("submit", ".new_task", function(e){  /* Add new Task to project A
     e.preventDefault();
   });
 
+
+  /*validations*/
+  /*$('.new_task form').formValidation({
+        framework: 'bootstrap',
+        excluded: [':disabled', ':hidden', ':not(:visible)'],
+        // Feedback icons
+        icon: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+
+        fields: {
+            'task[name]': {
+                validators: {
+                    notEmpty: {
+                        message: 'Task can not be empty'
+                    },
+                    stringLength: {
+                        message: 'Task content must be less than 200 characters',
+                        max: function (value, validator, $field) {
+                            return 6 - (value.match(/\r/g) || []).length;
+                        }
+                    }
+                }
+            }
+        }
+
+        /*put here new fields*/
+   /* });*/
 
  });

@@ -4,5 +4,5 @@ class Project < ActiveRecord::Base
 	validates :name,
 			 presence: true, #не пустая строка
 			 #uniqueness: true, 
-			 length: { maximum: 30 }
+			 length: { maximum: 50 }
 end
