@@ -47,12 +47,11 @@ $(document).ready(function() {
    
 
     function strokeCheckedTasks(e){		//strocked//
-    	e.each(function(i,elem) {
+    	e.each(function(i,elem){
     	  if (elem.getAttribute('value') == 'true') {
           $(this).prop( "checked", true ); /*add checked to chack_box_tag*/
     	  	$(this).closest(".forchack").find(".tasks").toggleClass('stroked');   
         }
-
     	});
     };
 
@@ -63,7 +62,7 @@ $(document).ready(function() {
     var project_id = $(this).prop('id');
     var project_title = $("#project_name_" + project_id);/*select by  project_name_id*/
     var old_project_name = project_title.text();   
-    project_title.html(" <div class='input-group edit_project_name'> <input class='form-control edit_project_name_field' placeholder='"+old_project_name+"' type='text'> <span class='input-group-btn' value='"+old_project_name+"'> <input type='submit' value='Edit Task' class='btn btn-danger edit_project_name_send_ajax' id='bt_"+project_id+"' data-disable-with='Edit Task'> </span> ");    
+    project_title.html(" <div class='input-group edit_project_name'> <input class='form-control edit_project_name_field' placeholder='"+old_project_name+"', value='"+old_project_name+"' type='text'> <span class='input-group-btn' value='"+old_project_name+"'> <input type='submit' value='Edit Task' class='btn btn-danger edit_project_name_send_ajax' id='bt_"+project_id+"' data-disable-with='Edit Task'> </span> ");    
   });
 
   $(document).on("click", ".edit_project_name_send_ajax", function(e){              /* edit project name with Ajax */
@@ -78,23 +77,25 @@ $(document).ready(function() {
                       data: {id: current_project_id, name: new_name_of_project},
                       success: function(data) { 
                         current_project_title.text(new_name_of_project);                  
-                      }
-                      
+                      }         
                     })
                         .error(function (a) {
                           current_project_title.text(old_project_name_for_current_project);
                           alert('error');
                         });
-
   });
+
   $(document).on("click", ".edit_task_bt", function(e){         /*edit task in projects*/
     var this_elem = $(this);
-    var task_id = this_elem.attr('id').replace('bt_edit_id_', '');
-    var editable_field = this_elem.closest("tr.forchack").find(".tasks");
-    var editable_text = editable_field.text();
-    editable_field.html("<div class='input-group edit_task_name'> <input class='form-control edit_task_name_field' placeholder='"+editable_text+"', value='"+editable_text+"' type='text'> <span class='input-group-btn' value='"+editable_text+"'> <input type='submit' value='Save' class='btn btn-warning edit_task_name_send_ajax' id='bt_edit_id_copy_"+task_id+"'> </span>"); 
-    console.log(editable_text);
-    
+    var already_has_input = this_elem.parents(".forchack").find(".tasks").find(".edit_task_name").length;
+    if(already_has_input){
+        return false;
+      }else{
+        var task_id = this_elem.attr('id').replace('bt_edit_id_', '');
+        var editable_field = this_elem.closest("tr.forchack").find(".tasks");
+        var editable_text = editable_field.text();
+        editable_field.html("<div class='input-group edit_task_name'> <input class='form-control edit_task_name_field' placeholder='"+editable_text+"', value='"+editable_text+"' type='text'> <span class='input-group-btn' value='"+editable_text+"'> <input type='submit' value='Save' class='btn btn-warning edit_task_name_send_ajax' id='bt_edit_id_copy_"+task_id+"'> </span>");
+      }
   });
 
   $(document).on("click", ".edit_task_name_send_ajax", function(e){              /* edit task name with Ajax */
@@ -102,25 +103,19 @@ $(document).ready(function() {
     var current_task_id = $(this).attr('id').replace('bt_edit_id_copy_', '');
     current_edited_task = $(this).closest("tr.forchack").find(".tasks");
     var old_task_name_for_current_project = $(this).parent(".input-group-btn").attr('value');
-    //console.log('new_name:'+new_name_of_project + ', pr_id:'+project_id +', current_pr_id: '+ current_project_id);
     
-              $.ajax({
-                      method: "POST",
-                      url: "/tasks/editTaskName/",
-                      data: {id: current_task_id, name: new_name_of_task},
-                      success: function(data) { 
-                      console.log(data);
-                       
-                    }
-                      
-                    })
-                      .done(function( msg ) {
-                        current_edited_task.text(new_name_of_task);
-                      })
-                        .error(function (a) {
-                          current_edited_task.text(old_task_name_for_current_project);
-                          alert('error');
-                        });
+        $.ajax({
+              method: "POST",
+              url: "/tasks/editTaskName/",
+              data: {id: current_task_id, name: new_name_of_task},
+              success: function(data) { 
+                current_edited_task.text(new_name_of_task); 
+              }
+        })
+          .error(function (a) {
+            current_edited_task.text(old_task_name_for_current_project);
+            alert('error');
+          });
 
   });
 
@@ -197,11 +192,9 @@ $(document).ready(function() {
               var new_position_row = current_row.detach();
               other_row.before(new_position_row);
              }
-            }             
+          }             
       })                  
-    }else{
-      alert("Oops");
-    }
+    }else{ alert("Oops"); }
   });
 
 
@@ -213,7 +206,6 @@ $(document).ready(function() {
           data: $(this).serialize(),
                   
           success: function(h) { 
-
             $("#new_project")[0].reset();
             $("#new_project").find('input[type="submit"]').prop('disabled', false);
             $('#modal_add_project').modal('hide');
@@ -222,7 +214,6 @@ $(document).ready(function() {
           } 
     })
     e.preventDefault();
-
   });
 
 $(document).on("submit", ".new_task", function(e){  /* Add new Task to project Ajax */
@@ -241,7 +232,6 @@ $(document).on("submit", ".new_task", function(e){  /* Add new Task to project A
           } 
     })
     e.preventDefault();
-
   });
 
 
