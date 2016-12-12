@@ -63,8 +63,8 @@ class TasksController < ApplicationController
   def destroy
     @task.destroy
     respond_to do |format|
-      format.html { redirect_to todolist_url }
-      format.json { head :no_content }
+      format.html { head :no_content }
+      #format.json { head :no_content }
     end
   end
 

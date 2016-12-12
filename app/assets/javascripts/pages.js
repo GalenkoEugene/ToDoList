@@ -253,14 +253,12 @@ $(document).on("submit", ".new_task", function(e){  /* Add new Task to project A
   });
 
   $(document).on("click", "th > .glyphicon-trash", function(e){  /* remove project Ajax */
-    //e.preventDefault();
     var this_table = $(this).parents("table");
     $.ajax({
           success: function(h) {
             this_table.fadeOut( "slow", function(){
               this_table.remove();
-            });
-            
+            }); 
           }
     })
     .error(function (a) {
@@ -268,7 +266,19 @@ $(document).on("submit", ".new_task", function(e){  /* Add new Task to project A
     });
   });
 
-
+  $(document).on("click", "td > .glyphicon-trash", function(e){  /* remove task  Ajax */
+    var this_row = $(this).parents("tr");
+    $.ajax({
+          success: function(h) {
+            this_row.fadeOut( "slow", function(){
+              this_row.remove();
+            }); 
+          }
+    })
+    .error(function (a) {
+        alert('error');
+    });
+  });
   /*validations*/
   /*$('.new_task form').formValidation({
         framework: 'bootstrap',
