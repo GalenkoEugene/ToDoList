@@ -66,12 +66,16 @@ $(document).ready(function() {
       var project_id = $(this).prop('id');
       var project_title = $("#project_name_" + project_id);/*select by  project_name_id*/
       var old_project_name = project_title.text();   
-      project_title.html(" <div class='input-group edit_project_name'> <input class='form-control edit_project_name_field' placeholder='"+old_project_name+"', value='"+old_project_name+"' maxlength='50' required='required' type='text'> <span class='input-group-btn' value='"+old_project_name+"'> <input type='submit' value='Edit Task' class='btn btn-danger edit_project_name_send_ajax' id='bt_"+project_id+"' data-disable-with='Edit Task'> </span> ");    
+      project_title.html(" <div class='input-group edit_project_name'> <input class='form-control edit_project_name_field' placeholder='"+old_project_name+"', value='"+old_project_name+"' maxlength='50' type='text'> <span class='input-group-btn' value='"+old_project_name+"'> <input type='submit' value='Edit Task' class='btn btn-danger edit_project_name_send_ajax' id='bt_"+project_id+"' data-disable-with='Edit Task'> </span> ");    
     }
   });
 
   $(document).on("click", ".edit_project_name_send_ajax", function(e){              /* edit project name with Ajax */
     var new_name_of_project = $(this).parent().parent().find("input.form-control.edit_project_name_field").val();
+    if(!new_name_of_project.length){
+      alert('This field can\'t be empty');
+      return false;
+    }
     var current_project_id = $(this).attr('id').replace('bt_', '');
     current_project_title = $("#project_name_" + current_project_id);
     var old_project_name_for_current_project = $(this).parent(".input-group-btn").attr('value');
@@ -99,12 +103,16 @@ $(document).ready(function() {
         var task_id = this_elem.attr('id').replace('bt_edit_id_', '');
         var editable_field = this_elem.closest("tr.forchack").find(".tasks");
         var editable_text = editable_field.text();
-        editable_field.html("<div class='input-group edit_task_name'> <input class='form-control edit_task_name_field' placeholder='"+editable_text+"' maxlength='200' required='required' value='"+editable_text+"' type='text'> <span class='input-group-btn' value='"+editable_text+"'> <input type='submit' value='Save' class='btn btn-warning edit_task_name_send_ajax' id='bt_edit_id_copy_"+task_id+"'> </span>");
+        editable_field.html("<div class='input-group edit_task_name'> <input class='form-control edit_task_name_field' placeholder='"+editable_text+"' maxlength='200' value='"+editable_text+"' type='text'> <span class='input-group-btn' value='"+editable_text+"'> <input type='submit' value='Save' class='btn btn-warning edit_task_name_send_ajax' id='bt_edit_id_copy_"+task_id+"'> </span>");
       }
   });
 
   $(document).on("click", ".edit_task_name_send_ajax", function(e){              /* edit task name with Ajax */
     var new_name_of_task = $(this).parent().parent().find("input.form-control.edit_task_name_field").val();
+    if(!new_name_of_task.length){
+      alert('This field can\'t be empty');
+      return false;
+    }
     var current_task_id = $(this).attr('id').replace('bt_edit_id_copy_', '');
     current_edited_task = $(this).closest("tr.forchack").find(".tasks");
     var old_task_name_for_current_project = $(this).parent(".input-group-btn").attr('value');
@@ -242,6 +250,22 @@ $(document).on("submit", ".new_task", function(e){  /* Add new Task to project A
           } 
     })
     e.preventDefault();
+  });
+
+  $(document).on("click", "th > .glyphicon-trash", function(e){  /* remove project Ajax */
+    //e.preventDefault();
+    var this_table = $(this).parents("table");
+    $.ajax({
+          success: function(h) {
+            this_table.fadeOut( "slow", function(){
+              this_table.remove();
+            });
+            
+          }
+    })
+    .error(function (a) {
+        alert('error');
+    });
   });
 
 

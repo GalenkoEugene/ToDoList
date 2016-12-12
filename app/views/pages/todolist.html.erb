@@ -10,7 +10,7 @@
 
         <%= hidden_field_tag(:projects, project.id) %>
         <th class="control"><%= link_to '', edit_project_path(project), remote: true, class: "glyphicon glyphicon-pencil edit_project_name", id: project.id %></th>
-        <th class="control"><%= link_to '', project, class: "glyphicon glyphicon-trash", method: :delete, data: { confirm: 'Are you sure?' } %></th>
+        <th class="control"><%= link_to '', project, remote: true, class: "glyphicon glyphicon-trash", method: :delete, data: { confirm: 'Are you sure?' } %></th>
       </tr>
     </thead>
 

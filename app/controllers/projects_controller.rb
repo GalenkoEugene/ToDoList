@@ -61,8 +61,8 @@ class ProjectsController < ApplicationController
   def destroy
     @project.destroy
     respond_to do |format|
-      format.html { redirect_to todolist_url } #redirect to To Do List
-      format.json { head :no_content }
+      format.html { head :no_content } #redirect to To Do List   redirect_to todolist_url
+      #format.json { head :no_content }
     end
   end
 
