@@ -227,17 +227,25 @@ $(document).ready(function() {
             $("#new_project")[0].reset();
             $("#new_project").find('input[type="submit"]').prop('disabled', false);
             $('#modal_add_project').modal('hide');
-            $(".table.table-hover").first().before(h);
-            $('html, body').animate({ scrollTop: 0 }, 'slow', function () { /*here will be animstion*/ });
+            if($(".table.table-hover").length){
+              $(".table.table-hover").first().before(h);
+              $('html, body').animate({ scrollTop: 0 }, 'slow', function () { /*here will be animstion*/ });
+              return true;
+            }
+            $(".row>.col-lg-7>.row").before(h);
           } 
     })
     e.preventDefault();
   });
 
-$(document).on("submit", ".new_task", function(e){  /* Add new Task to project Ajax */
+$(document).on("submit", ".new_task", function(e){  /* Add new Task to project Ajax */  /**/
     var input = $(this).find('input[type="text"]');
     var bt = $(this).find('input[type="submit"]');
-    var put_here = $(this).parents(".put_task_after_me");
+    var put_here = $(this).parents("table").find(".put_task_inside_me");
+    //console.log(put_here);
+    $(this).find('input#task_rating').prop('value', $.now());
+    //console.log($(this).find('input#task_rating').prop('value', $.now()));
+    //$(this).reset();
     $.ajax({
           method: "POST",
           url: $(this).attr('action'), /*insted of '/projects/' */
@@ -246,14 +254,14 @@ $(document).on("submit", ".new_task", function(e){  /* Add new Task to project A
           success: function(h) {
             bt.prop('disabled', false);
             input.prop('value', '');
-            put_here.after(h);
+            put_here.append(h);
           } 
     })
     e.preventDefault();
   });
 
   $(document).on("click", "th > .glyphicon-trash", function(e){  /* remove project Ajax */
-    var this_table = $(this).parents("table");
+    var this_table = $(this).parents("table"); //$(this).parents("table").nextAll("br")
     $.ajax({
           success: function(h) {
             this_table.fadeOut( "slow", function(){

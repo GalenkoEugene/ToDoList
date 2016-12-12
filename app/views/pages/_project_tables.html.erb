@@ -12,12 +12,10 @@
         <th class="control"><%= link_to '', edit_project_path(project), remote: true, class: "glyphicon glyphicon-pencil edit_project_name", id: project.id %></th>
         <th class="control"><%= link_to '', project, remote: true, class: "glyphicon glyphicon-trash", method: :delete, data: { confirm: 'Are you sure?' } %></th>
       </tr>
+      <%= render 'pages/form_for_add_task' %> 
     </thead>
 
-    <%= render 'pages/form_for_add_task' %> 
-
-    <tbody>
-      
+    <tbody class="put_task_inside_me">
+        
     </tbody>
   </table>
-<br><br><br>

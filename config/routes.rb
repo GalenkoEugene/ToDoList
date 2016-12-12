@@ -11,6 +11,7 @@ ToDoList::Application.routes.draw do
   post 'tasks/editTaskName',        to: 'tasks#editTaskName'
   post 'tasks/setDeadline/',        to: 'tasks#setDeadline'
   post 'tasks/swapTasks',           to: 'tasks#swapTasks'
+  #post 'tasks/new',                 to: 'tasks#new', rating: Time.now
   
 match '/todolist', to: 'pages#todolist', via: 'get'
   # The priority is based upon order of creation: first created -> highest priority.
