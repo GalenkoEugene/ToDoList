@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20161212192954) do
 
   create_table "tasks", force: :cascade do |t|
     t.string   "name"
-    t.boolean  "status",      default: false
+    t.boolean  "status",               default: false
     t.integer  "project_id"
     t.integer  "rating",     limit: 8
     t.datetime "created_at"

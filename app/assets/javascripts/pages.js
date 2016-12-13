@@ -242,10 +242,11 @@ $(document).on("submit", ".new_task", function(e){  /* Add new Task to project A
     var input = $(this).find('input[type="text"]');
     var bt = $(this).find('input[type="submit"]');
     var put_here = $(this).parents("table").find(".put_task_inside_me");
-    //console.log(put_here);
-    $(this).find('input#task_rating').prop('value', $.now());
-    //console.log($(this).find('input#task_rating').prop('value', $.now()));
-    //$(this).reset();
+    var has_row = put_here.children(".forchack").length;
+    if(has_row){
+      put_here = put_here.children(".forchack").first();
+    }
+    $(this).find('input#task_rating').prop('value', $.now());  /*set date/time for rating*/
     $.ajax({
           method: "POST",
           url: $(this).attr('action'), /*insted of '/projects/' */
@@ -254,6 +255,10 @@ $(document).on("submit", ".new_task", function(e){  /* Add new Task to project A
           success: function(h) {
             bt.prop('disabled', false);
             input.prop('value', '');
+            if(has_row){
+              put_here.before(h);
+              return true;
+            }
             put_here.append(h);
           } 
     })
