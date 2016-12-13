@@ -321,5 +321,11 @@ $(document).on("submit", ".new_task", function(e){  /* Add new Task to project A
 
         /*put here new fields*/
    /* });*/
-
+   
+  $( document ).ajaxStart(function() {
+    $( "img.ajax_loader").css('visibility','visible');
+  });
+  $( document ).ajaxStop(function() {
+    $( "img.ajax_loader").css('visibility','hidden');
+  });
  });
