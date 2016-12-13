@@ -18,6 +18,14 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+html body { 
+background: url(bg.jpg) no-repeat center center fixed; 
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+}
+
 #logo {
   float: left;
   margin-right: 10px;
@@ -68,8 +76,18 @@ footer {
 .input-group.add_tast_to_project{width: 97%;}
 .input-group.edit_project_name{width: 100%;}
 
-                                                                         /*tables*/
-thead tr th { background: linear-gradient(to top, #1462b5, #71ceef);}
+table.table{                                                                   /*tables*/
+  margin-bottom: 60px;
+  margin-top: 20px;
+  }    
+thead tr:first-child { background: linear-gradient(to top, #1462b5, #429cfb);}
+thead tr:nth-child(2) { 
+  background: rgb(211,211,211);
+  border: 0;
+}
+tbody{
+  background: white;
+}
 /*tbody tr td {background: #FFFFFF;}*/
   tr:last-child td:first-child {border-radius: 0 0 0 10px!important;}
   tr:last-child td:last-child {border-radius: 0 0 10px 0!important;}
@@ -80,7 +98,19 @@ tbody tr:hover{
     color: rgba(176,196,222, 0.8);
   }
 }
-/*th.projects{font: italic bold 14px/1.5 Times, 'New Century Schoolbook', serif;} /*for projects name*/
+th.project_name{                                                          /*for projects name*/
+  font: bold 130% serif;
+  text-shadow: 0 0 8px rgba(0,0,0,0.6); /* Параметры тени */
+  color: white;
+}
+.add_tast_to_project_form{
+  font:  100% serif;
+  text-shadow: 0 0 4px rgba(211,211,211,0.9)
+}
+td.tasks{ /*color of tasks name*/
+  color: rgba(122,156,199, 0.9);
+  text-shadow: 0 0 2px rgba(0,0,0,0.2); /* Параметры тени */
+}
 .control, .control>a{
   width: 15px;
   height: 17px;
@@ -88,8 +118,7 @@ tbody tr:hover{
   .glyphicon:hover{
     cursor:pointer;
     color: rgba(122,156,199, 0.8);
-  }
-   
+  } 
 }
 tbody tr.put_task_after_me{
   background-color: rgba( 211,211,211, 0.5)!important; /* Цвет фона */
@@ -99,10 +128,17 @@ tbody tr.put_task_after_me{
 .control_left_side{
   width: 15px;
   height: 17px;
-  .glyphicon{
-    vertical-align: middle;
-    color: rgba(211,211,211, 0.9);
+  .glyphicon-plus-sign{
+    vertical-align: middle; 
+    color: green;
   }
+  .glyphicon-hourglass{
+    padding-left: 3px;
+    color: rgba(255,255,255, 0.8);
+  }
+}
+a.glyphicon.control_right_side{
+  color: rgba(211,211,211, 0.9); 
 }
 
 a{
