@@ -232,7 +232,7 @@ $(document).ready(function() {
               $('html, body').animate({ scrollTop: 0 }, 'slow', function () { /*here will be animstion*/ });
               return true;
             }
-            $(".row>.col-lg-7>.row").before(h);
+            $(".row>.target_for_project>.row").before(h);
           } 
     })
     e.preventDefault();
