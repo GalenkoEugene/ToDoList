@@ -26,20 +26,18 @@ background: url(bg.jpg) no-repeat center center fixed;
 background-size: cover;
 }
 
-#logo {
-  float: left;
-  margin-right: 10px;
-  font-size: 1.7em;
-  color: white;
-  text-transform: uppercase;
-  letter-spacing: -1px;
-  padding-top: 9px;
-  font-weight: bold;
-  line-height: 1;
-  &:hover {
-    color: white;
-    text-decoration: none;
+/* header */
+.navbar-default .navbar-nav > li > a > span.glyphicon-log-out{
+  color: rgb(245, 0, 0);
+  text-shadow: 0 0 4px grey;
+  &:hover{
+    color: red;
+    text-shadow: 0 0 6px red;
   }
+}
+
+ul.navbar-form.navbar-left{
+  color: grey;
 }
 
 /* footer */
@@ -77,8 +75,7 @@ footer {
 .input-group.edit_project_name{width: 100%;}
 
 table.table{                                                                   /*tables*/
-  margin-bottom: 60px;
-  margin-top: 20px;
+  margin-bottom: 80px;
   }    
 thead tr:first-child { background: linear-gradient(to top, #1462b5, #429cfb);}
 thead tr:nth-child(2) { 
@@ -120,9 +117,9 @@ td.tasks{ /*color of tasks name*/
     color: rgba(122,156,199, 0.8);
   } 
 }
-tbody tr.put_task_after_me{
+/*tbody tr.put_task_after_me{
   background-color: rgba( 211,211,211, 0.5)!important; /* Цвет фона */
-}
+/*}*/
 .inline{display: inline;}
 
 .control_left_side{
@@ -171,4 +168,27 @@ img.ajax_loader{
   height: 30px;
   width: 30px;
   margin: -15px 0 0 -15px;
+}
+
+#new_user{
+  width: 200px;
+}
+.db_tables{
+  list-style-type: none;
+  margin-bottom: 20px;
+
+}
+.transparent_sql{
+  font-family: Verdana, Arial, Helvetica, sans-serif; 
+  font-size: 13pt; /* Размер шрифта в пунктах */
+  text-shadow: 1px 1px 2px white, 0 0 1em grey;
+  border-radius: 5px;
+  border: 1px solid rgba(211,211,211, 0.3);
+  padding: 5px;
+  padding-left: 12px;
+  background: rgba(211,211,211, 0.1);
+  margin-bottom: 70px;
+}
+.sql_header{
+  text-align: center;
 }

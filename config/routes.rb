@@ -1,7 +1,7 @@
 ToDoList::Application.routes.draw do
   devise_for :users
-  get 'persons/profile'
-
+  get 'profile',  to: "persons#profile"
+  get 'sql',      to: "pages#sql"
  # get "pages/todolist"
   resources :tasks
   resources :projects
@@ -18,7 +18,7 @@ match '/todolist', to: 'pages#todolist', via: 'get'
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'home#index'
+  root 'pages#todolist'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
