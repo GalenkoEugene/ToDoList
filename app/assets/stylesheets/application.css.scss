@@ -188,6 +188,9 @@ img.ajax_loader{
   padding-left: 12px;
   background: rgba(211,211,211, 0.1);
   margin-bottom: 70px;
+  ul>li>ul>li{
+    text-shadow: 1px 1px 1px red, 0 0 1em white;
+  }
 }
 .sql_header{
   text-align: center;
