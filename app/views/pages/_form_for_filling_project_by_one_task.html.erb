@@ -1,6 +1,7 @@
 <tr class="forchack" id=<%= 'tr_task_id_'+task.id.to_s %>>
         <td class="control_left_side"><%= check_box_tag task.id, task.status, task.status, class: 'checked' %></td>  
-        <td class="tasks"><%= task.name %></td>    
+        <td class="tasks"><%= task.name %></td>
+        <td class="left_days"></td>      
         <td class="control calendar"><span class="glyphicon glyphicon-calendar deadline" title= <%= task.deadline ? task.deadline : "Set_deadline" %> ></span></td>
         
         <td class="control"><span class="glyphicon glyphicon glyphicon-arrow-up" aria-hidden="true"></span></td>

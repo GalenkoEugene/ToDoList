@@ -159,10 +159,10 @@ $(document).ready(function() {
   });
 
   $(document).on("click", ".save_deadline_send_ajax", function(e){                                  /*****set deadline*****/
+    var show_deadline = $(this).parents(".forchack").children(".control_left_side").find(".checked").val()  //checkbox
     var day_of_deadline = $(this).parents(".select_deadline_field_input").find(".datepicker").val();
     if(day_of_deadline.length){ /*if field is not empty*/
     var task_id = $(this).parents(".forchack").attr('id').replace('tr_task_id_', '');
-    
       $.ajax({
         method: "POST",
         url: "/tasks/setDeadline/",
@@ -170,7 +170,7 @@ $(document).ready(function() {
         success: function(data) { 
           $(".temporary").remove();
           this_dedline_calc.parent().after(for_replace_controls_bt);
-          this_dedline_calc.prop('title', day_of_deadline);         
+          this_dedline_calc.prop('title', day_of_deadline);       
         }
       })
         .error(function (a) {
@@ -292,6 +292,7 @@ $(document).on("submit", ".new_task", function(e){  /* Add new Task to project A
         alert('error');
     });
   });
+
   /*validations*/
   /*$('.new_task form').formValidation({
         framework: 'bootstrap',
