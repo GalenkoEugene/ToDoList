@@ -1,2 +1,46 @@
-<h1>Persons#profile</h1>
-<p>Find me in app/views/persons/profile.html.erb</p>
+
+
+<div class="sql_header">
+	<h2>Statistics</h2>	
+</div>
+
+<div class="transparent_sql">
+	
+	<ul class="list_of_sql_tasks">
+		
+		
+		<li>You have been registered at:
+			<ul>
+				<li> <%= @info.created_at %></li>
+			</ul>
+		</li>
+		<li>Number of visits is:
+			<ul>
+				<li> <%= @info.sign_in_count %> times </li>
+			</ul>
+		</li>
+		<br><br>
+		<li>Last Sign in at: 
+			<ul>
+				<li> <%= @info.last_sign_in_at %> </li>
+			</ul>
+		</li>
+		<li>Last Sign in from IP:
+			<ul>
+				<li> <%= @info.last_sign_in_ip %> </li>
+			</ul>
+		</li>
+		<br><br>
+		<li>Current Sign in at:
+			<ul>
+				<li> <%= @info.current_sign_in_at %> </li>
+			</ul>
+		</li>
+		<li>Current Sign in IP:
+			<ul>
+				<li> <%= @info.current_sign_in_ip %> </li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
