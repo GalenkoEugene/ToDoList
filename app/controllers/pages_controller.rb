@@ -10,6 +10,4 @@ class PagesController < ApplicationController
     @task = Task.new
   end
 
-
-
 end

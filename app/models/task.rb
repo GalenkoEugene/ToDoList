@@ -1,6 +1,6 @@
 class Task < ActiveRecord::Base
 	belongs_to :project
-	validates :name,
+	validates :name, :project_id,
 			 presence: true, #не пустая строка
 			 length: { maximum: 200 }
 end
