@@ -8,10 +8,25 @@ RSpec.configure do |config|
 end
 
 describe PagesController do
-  describe "GET 'todolist'"
-  it "returns http success from '/todolist'" do
-  	get :todolist
-  	response.should be_redirect
+
+  describe "GET #todolist " do
+    it "returns http success from '/todolist'" do
+    	get :todolist
+    	response.should be_redirect
+    end
+
+    it 'renders todolist view' do
+      get :todolist
+      expect(response).to render_template :todolist
+    end
+#    it 'populates an array of all projects' do
+#      project1 = FactoryGirl.create(:project)
+#      project2 = FactoryGirl.create(:project)
+
+#      get :todolist
+
+#      expect(assigns(:project)).to match_array([project1, project2])
+#    end
   end
 
   describe "GET 'sql'"
@@ -19,4 +34,5 @@ describe PagesController do
   	get "sql"
   	response.should be_redirect #be_success
   end
+
 end

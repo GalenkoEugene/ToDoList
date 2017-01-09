@@ -23,8 +23,14 @@ module ToDoList
     config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
   
     config.generators do |g|
-      g.template_engine :haml
-      g.test_framework  :rspec, fixtures: true, views: false
+      g.template_engine :slim
+      g.test_framework  :rspec, 
+                        fixtures: true, 
+                        views: false,
+                        helper_spec: false,
+                        routing_spec: false,
+                        request_spec: false,
+                        controller_spec: true
       g.fixture_replacement :factory_girl, dir: "spec/factories"
     end
   end
