@@ -8,11 +8,13 @@ RSpec.configure do |config|
 end
 
 describe PagesController do
+  
+  login_user
 
   describe "GET #todolist " do
     it "returns http success from '/todolist'" do
     	get :todolist
-    	response.should be_redirect
+    	response.should be_success
     end
 
     it 'renders todolist view' do
@@ -32,7 +34,7 @@ describe PagesController do
   describe "GET 'sql'"
   it "returns http success from '/sql'" do
   	get "sql"
-  	response.should be_redirect #be_success
+  	response.should be_success #be_redirect
   end
 
 end
