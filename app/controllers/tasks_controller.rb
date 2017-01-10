@@ -3,27 +3,26 @@ class TasksController < ApplicationController
 
   # GET /tasks
   # GET /tasks.json
-  def index
-    @projects = Project.where(user_id: User.find_by(email: current_user.email).id) #current user projects
+  #def index
+  #  @projects = Project.where(user_id: User.find_by(email: current_user.email).id) #current user projects
 
-    @tasks = Task.where(project_id: @projects)
+  #  @tasks = Task.where(project_id: @projects)
     
-  end
+  #end
 
   # GET /tasks/1
   # GET /tasks/1.json
-  def show
-  end
+  #def show
+  #end
 
   # GET /tasks/new
-  def new
-    @task = Task.new
-    @project_id = '' #WTF?
-  end
+  #def new
+  #  @task = Task.new
+  #end
 
   # GET /tasks/1/edit
-  def edit
-  end
+  #def edit
+  #end
 
   # POST /tasks
   # POST /tasks.json
@@ -46,17 +45,17 @@ class TasksController < ApplicationController
 
   # PATCH/PUT /tasks/1
   # PATCH/PUT /tasks/1.json
-  def update
-    respond_to do |format|
-      if @task.update(task_params)
-        format.html { redirect_to @task, notice: 'Task was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @task.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+  #def update
+  #  respond_to do |format|
+  #    if @task.update(task_params)
+  #      format.html { redirect_to @task, notice: 'Task was successfully updated.' }
+  #      format.json { head :no_content }
+  #    else
+  #      format.html { render action: 'edit' }
+  #      format.json { render json: @task.errors, status: :unprocessable_entity }
+  #    end
+  #  end
+  #end
 
   # DELETE /tasks/1
   # DELETE /tasks/1.json

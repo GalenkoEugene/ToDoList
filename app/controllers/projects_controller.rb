@@ -3,27 +3,27 @@ class ProjectsController < ApplicationController
 
   # GET /projects
   # GET /projects.json
-  def index
-    @user_id = User.find_by(email: current_user.email).id
-    @projects = Project.where(user_id: @user_id)
-    @tasks = Task.where(project_id: @projects) #cut down extra projects, list only current user tasks
-  end
+  #def index
+  #  @user_id = User.find_by(email: current_user.email).id
+  #  @projects = Project.where(user_id: @user_id)
+  #  @tasks = Task.where(project_id: @projects) #cut down extra projects, list only current user tasks
+  #end
 
   # GET /projects/1
   # GET /projects/1.json
-  def show
-  end
+  #def show
+  #end
 
   # GET /projects/new
-  def new
-    @project = Project.new
+  #def new
+  #  @project = Project.new
     #@user_id = User.find_by(email: current_user.email).id
-  end
+  #end
 
   # GET /projects/1/edit
-  def edit
+  #def edit
     #@user_id = User.find_by(email: current_user.email).id
-  end
+  #end
 
   # POST /projects
   # POST /projects.json
@@ -44,17 +44,17 @@ class ProjectsController < ApplicationController
 
   # PATCH/PUT /projects/1
   # PATCH/PUT /projects/1.json
-  def update
-    respond_to do |format|
-      if @project.update(project_params)
-        format.html { redirect_to todolist_url, notice: 'Project was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @project.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+  #def update
+  #  respond_to do |format|
+  #    if @project.update(project_params)
+  #      format.html { redirect_to todolist_url, notice: 'Project was successfully updated.' }
+  #      format.json { head :no_content }
+  #    else
+  #     format.html { render action: 'edit' }
+  #      format.json { render json: @project.errors, status: :unprocessable_entity }
+  #   end
+  # end
+  #end
 
   # DELETE /projects/1
   # DELETE /projects/1.json
@@ -67,7 +67,11 @@ class ProjectsController < ApplicationController
   end
 
   def editProjectName
-    Project.find_by(id: params[:id]).update(name: params[:name])
+    if Project.find_by(id: params[:id]) then
+      Project.find_by(id: params[:id]).update(name: params[:name])
+    else
+      render html: 'can not find project by current id'
+    end
   end
 
   private

@@ -1,11 +1,4 @@
 require 'rails_helper'
-#require 'rspec/rails'
-# note: require 'devise' after require 'rspec/rails'
-require 'devise'
-
-RSpec.configure do |config|
-  config.include Devise::Test::ControllerHelpers, :type => :controller
-end
 
 describe PagesController do
   
@@ -36,5 +29,4 @@ describe PagesController do
   	get "sql"
   	expect(response).to be_success #be_redirect
   end
-
 end

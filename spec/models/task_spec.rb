@@ -1,9 +1,4 @@
 require "rails_helper"
-#require 'devise'
-
-#RSpec.configure do |config|
-#  config.include Devise::Test::ControllerHelpers, :type => :controller
-#end
 
 describe Task do
   it "validates presence of task name" do
