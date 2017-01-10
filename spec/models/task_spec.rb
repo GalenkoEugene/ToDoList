@@ -16,6 +16,6 @@ describe Task do
 
   it "has status false when task created" do
     new_task = Task.new(name: "foo", project_id: 1)
-    new_task.status.should be false
+    expect(new_task.status).to be false
   end
 end

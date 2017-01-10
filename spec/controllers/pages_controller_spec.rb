@@ -14,7 +14,7 @@ describe PagesController do
   describe "GET #todolist " do
     it "returns http success from '/todolist'" do
     	get :todolist
-    	response.should be_success
+    	expect(response).to be_success
     end
 
     it 'renders todolist view' do
@@ -34,7 +34,7 @@ describe PagesController do
   describe "GET 'sql'"
   it "returns http success from '/sql'" do
   	get "sql"
-  	response.should be_success #be_redirect
+  	expect(response).to be_success #be_redirect
   end
 
 end
