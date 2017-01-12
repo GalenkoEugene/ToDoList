@@ -17,6 +17,7 @@ end
 
 group :test do
   gem 'shoulda-matchers','3.1.1'#, require: false
+  gem 'capybara', '2.11.0'
 end
 
 group :production do

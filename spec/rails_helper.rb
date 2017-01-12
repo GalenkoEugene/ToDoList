@@ -9,6 +9,8 @@ require 'shoulda/matchers'
 require 'devise'
 require 'support/controller_macros'
 require 'factory_girl_rails'
+require 'capybara/rspec'
+require 'capybara/rails'
 
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|
@@ -70,4 +72,6 @@ RSpec.configure do |config|
   #config.include Devise::TestHelpers, :type => :controller
   config.include Devise::Test::ControllerHelpers, type: :controller
   config.extend ControllerMacros, type: :controller
+  config.include Capybara::DSL#, :type => :request
+  #config.use_transactional_fixtures = false # ?
 end

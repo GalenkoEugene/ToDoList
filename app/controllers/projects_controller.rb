@@ -28,7 +28,7 @@ class ProjectsController < ApplicationController
   # POST /projects
   # POST /projects.json
   def create
-    @project = Project.new(project_params)
+    @project = Project.new(project_params) #user_id: params[:user_id], name: params[:name])#
     @task = Task.new
     respond_to do |format|
       if @project.save
@@ -67,8 +67,8 @@ class ProjectsController < ApplicationController
   end
 
   def editProjectName
-    if Project.find_by(id: params[:id]) then
-      Project.find_by(id: params[:id]).update(name: params[:name])
+    if Project.find_by(id: params[:project][:id]) then
+      Project.find_by(id: params[:project][:id]).update(project_params)
     else
       render html: 'can not find project by current id'
     end

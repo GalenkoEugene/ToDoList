@@ -83,7 +83,7 @@ $(document).ready(function() {
               $.ajax({
                       method: "POST",
                       url: "/projects/editProjectName/",
-                      data: {id: current_project_id, name: new_name_of_project},
+                      data: { project: {id: current_project_id, name: new_name_of_project} }, /*send to project_params*/
                       success: function(data) { 
                         current_project_title.text(new_name_of_project);                  
                       }         
