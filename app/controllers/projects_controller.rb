@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_action :set_project, only: [ :destroy ] #:show, :edit, :update
+  before_action :set_project, only: [ :destroy, :editProjectName ] #:show, :edit, :update
 
   # POST /projects
   def create
@@ -11,7 +11,7 @@ class ProjectsController < ApplicationController
         format.html { render :partial => "pages/project_tables", :locals => { :project => @project } } 
         #format.json { render action: 'show', status: :created, location: @project }
       else
-        format.html { render action: 'new' }
+        format.html { render html: "Error, can not save... reload page and try again" }
         format.json { render json: @project.errors, status: :unprocessable_entity }
       end
     end
@@ -21,17 +21,15 @@ class ProjectsController < ApplicationController
   def destroy
     @project.destroy
     respond_to do |format|
-      format.html { head :no_content } #redirect to To Do List   redirect_to todolist_url
+      format.html { head :no_content } 
       #format.json { head :no_content }
     end
   end
 
   def editProjectName
-    @project = Project.find_by(id: params[:project][:id])
-
     if have_access(@project) then 
       @project.update(project_params)
-    else #flash: rise error
+    else 
       render html: 'can not find project by given id or you have no permission'
     end
   end
@@ -43,11 +41,7 @@ class ProjectsController < ApplicationController
     end
     # Use callbacks to share common setup or constraints between actions.
     def set_project
-      # if params[:id] then
-         @project = Project.find(params[:id])
-      # else
-      #   @project = Project.find_by(id: params[:project][:id])
-      # end
+         @project = Project.find(params[:id] || params[:project][:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

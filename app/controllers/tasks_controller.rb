@@ -1,69 +1,26 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
-  # GET /tasks
-  # GET /tasks.json
-  #def index
-  #  @projects = Project.where(user_id: User.find_by(email: current_user.email).id) #current user projects
-
-  #  @tasks = Task.where(project_id: @projects)
-    
-  #end
-
-  # GET /tasks/1
-  # GET /tasks/1.json
-  #def show
-  #end
-
-  # GET /tasks/new
-  #def new
-  #  @task = Task.new
-  #end
-
-  # GET /tasks/1/edit
-  #def edit
-  #end
-
   # POST /tasks
-  # POST /tasks.json
   def create
     @task = Task.new(task_params) 
-
-    @projects = Project.where(user_id: User.find_by(email: current_user.email).id) #current user projects
-    @tasks = Task.where(project_id: @projects)
+    #@projects = Project.where(user_id: current_user.id) #current user projects
+    #@tasks = Task.where(project_id: @projects)
 
     respond_to do |format|
       if @task.save
-        format.html { render :partial => "pages/form_for_filling_project_by_one_task", :locals => { :task => @task } } # redirect_to todolist_url, notice: 'Task was successfully created.'
-        #format.json { render action: 'show', status: :created, location: @task }
+        format.html { render :partial => "pages/form_for_filling_project_by_one_task", :locals => { :task => @task } } 
       else
-        format.html { render action: 'new' }
-        format.json { render json: @task.errors, status: :unprocessable_entity }
+        format.html { head :no_content }
       end
     end
   end
 
-  # PATCH/PUT /tasks/1
-  # PATCH/PUT /tasks/1.json
-  #def update
-  #  respond_to do |format|
-  #    if @task.update(task_params)
-  #      format.html { redirect_to @task, notice: 'Task was successfully updated.' }
-  #      format.json { head :no_content }
-  #    else
-  #      format.html { render action: 'edit' }
-  #      format.json { render json: @task.errors, status: :unprocessable_entity }
-  #    end
-  #  end
-  #end
-
   # DELETE /tasks/1
-  # DELETE /tasks/1.json
   def destroy
     @task.destroy
     respond_to do |format|
       format.html { head :no_content }
-      #format.json { head :no_content }
     end
   end
 
@@ -100,6 +57,41 @@ class TasksController < ApplicationController
       params.require(:task).permit(:rating, :name, :status, :project_id, :value, :deadline)
     end
 end
-  #def editTaskStatus
-  #  Tasks.find_by(id: task_params[:id]).update(status: task_params[:value])
-  #end 
+
+
+  # GET /tasks
+  # GET /tasks.json
+  #def index
+  #  @projects = Project.where(user_id: User.find_by(email: current_user.email).id) #current user projects
+
+  #  @tasks = Task.where(project_id: @projects)
+    
+  #end
+
+  # GET /tasks/1
+  # GET /tasks/1.json
+  #def show
+  #end
+
+  # GET /tasks/new
+  #def new
+  #  @task = Task.new
+  #end
+
+  # GET /tasks/1/edit
+  #def edit
+  #end
+
+  # PATCH/PUT /tasks/1
+  # PATCH/PUT /tasks/1.json
+  #def update
+  #  respond_to do |format|
+  #    if @task.update(task_params)
+  #      format.html { redirect_to @task, notice: 'Task was successfully updated.' }
+  #      format.json { head :no_content }
+  #    else
+  #      format.html { render action: 'edit' }
+  #      format.json { render json: @task.errors, status: :unprocessable_entity }
+  #    end
+  #  end
+  #end
