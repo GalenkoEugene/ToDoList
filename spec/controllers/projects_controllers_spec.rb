@@ -14,8 +14,15 @@ describe ProjectsController do
   end
 
   describe "POST create" do
-  	it "render 'pages/project_tables' when Ajax is success" do
-  	  post :create, xhr: true, params: { :project => {name: "new_name_of_project", user_id: user.id} }
+  	it "render 'pages/_project_tables' when Ajax is success" do
+  	  post :create, xhr: true, params: { :project => {name: "new_project_name", user_id: user.id} }
+  	  expect(response).to be_success
+  	  expect(response).to render_template("pages/_project_tables")
+  	end
+
+  	it "has new empty project" do
+  	  post :create, xhr: true, params: { :project => {name: "new_project_name", user_id: user.id} }
+  	  
   	end
   end
 

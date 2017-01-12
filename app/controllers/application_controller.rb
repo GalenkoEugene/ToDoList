@@ -11,5 +11,4 @@ class ApplicationController < ActionController::Base
  	render plain: '404 Not found', status: 404 
   end
   
-  
 end
