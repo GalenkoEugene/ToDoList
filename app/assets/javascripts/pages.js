@@ -94,7 +94,20 @@ $(document).ready(function() {
                         });
   });
 
-  $(document).on("click", ".edit_task_bt", function(e){         /*edit task in projects*/
+  /* $(rails.linkClickSelector).live('click.rails', function(e) {
+    var link = $(this);
+    if (!rails.allowAction(link)) return rails.stopEverything(e);
+
+    if (link.data('remote') !== undefined) {
+      rails.handleRemote(link);
+      return false;
+    } else if (link.data('method')) {
+      rails.handleMethod(link);
+      return false;
+    }
+  });*/
+
+  $(document).on("click", ".edit_task_bt", function(event){         /*add field for edit task in projects*/
     var this_elem = $(this);
     var already_has_input = this_elem.parents(".forchack").find(".edit_task_name").length;
     if(already_has_input){
@@ -106,6 +119,7 @@ $(document).ready(function() {
         editable_field.html("<div class='input-group edit_task_name'> <input class='form-control edit_task_name_field' placeholder='"+editable_text+"' maxlength='200' value='"+editable_text+"' type='text'> <span class='input-group-btn' value='"+editable_text+"'> <input type='submit' value='Save' class='btn btn-warning edit_task_name_send_ajax' id='bt_edit_id_copy_"+task_id+"'> </span>");
       }
   });
+
 
   $(document).on("click", ".edit_task_name_send_ajax", function(e){              /* edit task name with Ajax */
     var new_name_of_task = $(this).parent().parent().find("input.form-control.edit_task_name_field").val();
