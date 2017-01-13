@@ -1,12 +1,11 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:show, :edit, :update, :destroy]
+  before_action :set_task, only: [:destroy, :editTaskName, :editTaskStatus, :setDeadline] #:show, :edit, :update,
 
   # POST /tasks
   def create
     @task = Task.new(task_params) 
     #@projects = Project.where(user_id: current_user.id) #current user projects
     #@tasks = Task.where(project_id: @projects)
-
     respond_to do |format|
       if @task.save
         format.html { render :partial => "pages/form_for_filling_project_by_one_task", :locals => { :task => @task } } 
@@ -25,15 +24,15 @@ class TasksController < ApplicationController
   end
 
   def editTaskStatus
-     Task.find_by(id: params[:id]).update(status: params[:value])
+    @task.update(status: params[:value])
   end 
 
   def editTaskName
-    Task.find_by(id: params[:id]).update(name: params[:name])
+    @task.update(name: params[:name])
   end
 
   def setDeadline
-    Task.find_by(id: params[:id]).update(deadline: params[:deadline])
+    @task.update(deadline: params[:deadline])
   end
 
   def swapTasks
@@ -47,13 +46,11 @@ class TasksController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_task
-      @task = Task.find(params[:id])
+      @task = Task.find(params[:id] || params[:task][:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
-      
-      #params[:project_id] = Project.find(8)
       params.require(:task).permit(:rating, :name, :status, :project_id, :value, :deadline)
     end
 end
