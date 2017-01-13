@@ -24,15 +24,15 @@ class TasksController < ApplicationController
   end
 
   def editTaskStatus
-    @task.update(status: params[:value])
+    @task.update(task_params)
   end 
 
   def editTaskName
-    @task.update(name: params[:name])
+    @task.update(task_params)
   end
 
   def setDeadline
-    @task.update(deadline: params[:deadline])
+    @task.update(task_params)
   end
 
   def swapTasks

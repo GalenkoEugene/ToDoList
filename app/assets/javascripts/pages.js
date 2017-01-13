@@ -6,12 +6,12 @@ $(document).ready(function() {
         var thisChackBox = $(this);
         var task_object = thisChackBox.closest("tr.forchack").find("td.tasks");
 
-    	if ($(this).attr('value') == 'false') {
+    	if ($(this).attr('value') == 'false') { /* value change to -> status and in view also*/
 
               $.ajax({
                       method: "POST",
                       url: "/tasks/editTaskStatus/",
-                      data: {id: taskId, value: true},
+                      data: { task: {id: taskId, status: true} },
                       success: function(data) { 
                         task_object.toggleClass('stroked');
                         thisChackBox.val(true);
@@ -28,7 +28,7 @@ $(document).ready(function() {
               $.ajax({
                       method: "POST",
                       url: "/tasks/editTaskStatus/",
-                      data: {id: taskId, value: false},
+                      data: { task: {id: taskId, status: false} },
                       success: function(data) { 
                         task_object.removeClass('stroked');
                         thisChackBox.val(false);
@@ -120,7 +120,7 @@ $(document).ready(function() {
         $.ajax({
               method: "POST",
               url: "/tasks/editTaskName/",
-              data: {id: current_task_id, name: new_name_of_task},
+              data: { task: {id: current_task_id, name: new_name_of_task} },
               success: function(data) { 
                 current_edited_task.text(new_name_of_task); 
               }
@@ -166,7 +166,7 @@ $(document).ready(function() {
       $.ajax({
         method: "POST",
         url: "/tasks/setDeadline/",
-        data: {id: task_id, deadline: day_of_deadline},
+        data: { task: {id: task_id, deadline: day_of_deadline} },
         success: function(data) { 
           $(".temporary").remove();
           this_dedline_calc.parent().after(for_replace_controls_bt);
