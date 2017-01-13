@@ -12,7 +12,7 @@
         
         <td class="control"><span class="glyphicon glyphicon glyphicon-arrow-up" aria-hidden="true"></span></td>
         <td class="control"><span class="glyphicon glyphicon glyphicon-arrow-down" aria-hidden="true"></span></td>
-        <td class="control"> <%= link_to '', edit_task_path(task), remote: true, class: "glyphicon glyphicon-pencil edit_task_bt", id: 'bt_edit_id_'+task.id.to_s %> </td>
+        <td class="control"> <%= link_to '', '#', remote: true, class: "glyphicon glyphicon-pencil edit_task_bt", id: 'bt_edit_id_'+task.id.to_s %> </td> <!-- edit_task_path(task) -->
         <td class="control"> <%= link_to '', task, remote: true, class: "glyphicon glyphicon-trash", method: :delete, data: { confirm: 'Are you sure?' } %> </td>
       </tr>
     <% end %>
