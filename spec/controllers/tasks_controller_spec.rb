@@ -1,7 +1,7 @@
 require 'rails_helper'
 
   describe TasksController do
-  	let(:user) { FactoryGirl.create(:user) }
+  	#let(:user) { FactoryGirl.create(:user) }
   	let(:task1) { FactoryGirl.create(:task) }
   	let(:this_task) { Task.find(task1.id) }
   	let(:task_status) { this_task.status }

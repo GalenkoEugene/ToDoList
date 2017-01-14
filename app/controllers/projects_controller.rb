@@ -30,7 +30,8 @@ class ProjectsController < ApplicationController
     if have_access(@project) then 
       @project.update(project_params)
     else 
-      render html: 'can not find project by given id or you have no permission'
+      flash[:warning] = "Something went wrong, try again. Can not find project by given id or you have no permission"
+      #render html: 'can not find project by given id or you have no permission'
     end
   end
 
