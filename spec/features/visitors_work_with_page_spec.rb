@@ -4,13 +4,13 @@ feature 'Visitor signs in' do
   let(:user) { FactoryGirl.create(:user)   }
   before(:each) { sign_in }
 
-  scenario 'open form for add new Project', :js => true do
+  scenario 'open form for add new Project' do ##, :js => true
     expect(page).to have_content("Welcome")
     click_link 'Create new Project'
     expect(page).to have_content("Please enter the name of the project")
   end
 
-  scenario 'create new project and add task', :js => true do
+  scenario 'create new project and add task' do
     click_link 'Create new Project'
 
     fill_in 'project[name]', with: 'awesome project'
