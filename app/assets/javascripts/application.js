@@ -13,5 +13,16 @@
 //= require jquery
 //= require bootstrap-sprockets
 //= require jquery_ujs
-//= require bootstrap-datepicker
+//= require bootstrap-datepicker/core
 //= require_tree .
+$(document).ready(function() {
+
+  $( document ).ajaxStart(function() {
+    $( "img.ajax_loader").css('visibility','visible');
+  });
+  
+  $( document ).ajaxStop(function() {
+    $( "img.ajax_loader").css('visibility','hidden');
+  });
+
+});
