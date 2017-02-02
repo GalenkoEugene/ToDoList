@@ -39,9 +39,7 @@
       <% else %>
         <ul class="nav navbar-nav navbar-right">
           <li><%= link_to 'Please log in', new_user_session_path %></li>
-          <li><%= link_to content_tag(:span, '', class: "glyphicon glyphicon-log-in"), new_user_session_path %></li>
-          <li><%= link_to ' or sign up', new_user_registration_path %></li>
-          <li><%= link_to content_tag(:span, '', class: "glyphicon glyphicon-registration-mark"), new_user_registration_path %></li>
+          <li><%= link_to ' or sign up', new_user_registration_path %></li>  
         </ul>
       <% end %>
     </div><!-- /.navbar-collapse -->

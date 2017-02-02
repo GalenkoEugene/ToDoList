@@ -21,12 +21,6 @@
   </table>
 <% end %>
 
-
-  <div class="row">
-    <div class="col-lg-4 col-sm-4"></div>
-    <div class="col-lg-2 col-sm-4">
-        <% link_to 'Add ToDoList', new_project_path, remote: true, class: "btn btn-success", id: 'add_project', title: "Создать новый проэкт" %>
-        <%= render 'modal' %>
-    </div>
-  </div>
+<a data-toggle="modal" href="#modal_add_project" class="btn btn-primary btn-lg" id="add_project">Create new Project</a>
+<%= render 'modal' %>
 

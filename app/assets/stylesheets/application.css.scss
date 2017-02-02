@@ -25,7 +25,24 @@ background: url(bg.jpg) no-repeat center center fixed;
 -o-background-size: cover;
 background-size: cover;
 }
-
+.content{
+  margin: auto;
+}
+@media (min-width: 768px) {
+  .content {
+    width: 768px;
+  }
+}
+@media (min-width: 960px) {
+  .content {
+    width: 955px;
+  }
+}
+@media (min-width: 1200px) {
+  .content {
+    width:  800px;
+  }
+}
 /* header */
 .navbar-default .navbar-nav > li > a > span.glyphicon-log-out{
   color: rgb(245, 0, 0);
@@ -74,7 +91,8 @@ footer {
 .input-group.add_tast_to_project{width: 97%;}
 .input-group.edit_project_name{width: 100%;}
 
-table.table{                                                                   /*tables*/
+table.table{                                                                 /*tables*/
+  min-width: 450px;
   margin-bottom: 80px;
   }    
 thead tr:first-child { background: linear-gradient(to top, #1462b5, #429cfb);}
@@ -107,6 +125,9 @@ th.project_name{                                                          /*for 
 td.tasks{ /*color of tasks name*/
   color: rgba(122,156,199, 0.9);
   text-shadow: 0 0 2px rgba(0,0,0,0.2); /* Параметры тени */
+}
+td, th {
+  vertical-align: middle!important;
 }
 .control, .control>a{
   width: 15px;
@@ -145,9 +166,7 @@ a{
 .select_deadline_field_input{
   width: 108px;
 }
-td, th {
-  vertical-align: middle!important;
-}
+
 .save_deadline_send_ajax{
   text-shadow: 1px 1px 2px black, 0 0 1em blue;
   border-left: 1px solid grey;
@@ -162,43 +181,20 @@ td, th {
 img.ajax_loader{
   visibility: hidden;
   position: fixed;
-  z-index: 16777271;
   top: 50%;
   left: 50%;
-  height: 30px;
-  width: 30px;
+  height: 35px;
+  width: 35px;
   margin: -15px 0 0 -15px;
 }
 
-#new_user{
-  width: 200px;
-}
-.db_tables{
-  list-style-type: none;
-  margin-bottom: 20px;
-
-}
-.transparent_sql{
-  font-family: Verdana, Arial, Helvetica, sans-serif; 
-  font-size: 13pt; /* Размер шрифта в пунктах */
-  text-shadow: 1px 1px 2px white, 0 0 1em grey;
-  border-radius: 5px;
-  border: 1px solid rgba(211,211,211, 0.3);
-  padding: 5px;
-  padding-left: 12px;
-  background: rgba(211,211,211, 0.1);
-  margin-bottom: 70px;
-  ul>li>ul>li{
-    text-shadow: 1px 1px 1px red, 0 0 1em white;
-  }
-}
-.sql_header{
-  text-align: center;
-}
 .left_days{
-  width: 85px;
+  width: 77px;
   height: 15px;
   color: grey;
   padding-right: 0px!important;
   padding-left: 1px!important;
+}
+a#add_project{
+  margin-left: calc(50% - 94px);
 }
