@@ -16,7 +16,7 @@ $(document).ready(function() {
               $('html, body').animate({ scrollTop: 0 }, 'slow', function () { /*here will be animstion*/ });
               return true;
             }
-            $(".row>.target_for_project>.row").before(h);
+            $(".target_for_project > a#add_project").before(h);
           } 
     })
     e.preventDefault();
