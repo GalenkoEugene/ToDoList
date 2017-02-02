@@ -1,6 +1,6 @@
 <header>
   
-  <nav class="navbar navbar-default">
+<nav class="navbar navbar-default">
   <div class="container-fluid">
 
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -13,10 +13,10 @@
       </button>
       <%= link_to "TODO LISTS", root_path, class: "navbar-brand" %>
     </div>
-
-    <% if user_signed_in? %>
+ 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <% if user_signed_in? %>
       <ul class="nav navbar-nav">
         <li><%= link_to content_tag(:span, "(current)", class: "sr-only"), sql_path %></li>
       </ul>
@@ -39,7 +39,7 @@
       <% else %>
         <ul class="nav navbar-nav navbar-right">
           <li><%= link_to 'Please log in', new_user_session_path %></li>
-          <li><%= link_to ' or sign up', new_user_registration_path %></li>  
+          <li><%= link_to ' or sign up', new_user_registration_path %></li> 
         </ul>
       <% end %>
     </div><!-- /.navbar-collapse -->
