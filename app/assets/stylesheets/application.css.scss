@@ -28,9 +28,14 @@ background-size: cover;
 .content{
   margin: auto;
 }
+@media (min-width: 414px) {
+  .content {
+    width: 99vw;
+  }
+}
 @media (min-width: 768px) {
   .content {
-    width: 768px;
+    width: 93vw;
   }
 }
 @media (min-width: 960px) {
@@ -92,7 +97,7 @@ footer {
 .input-group.edit_project_name{width: 100%;}
 
 table.table{                                                                 /*tables*/
-  min-width: 450px;
+  /*min-width: 450px;*/
   margin-bottom: 80px;
   }    
 thead tr:first-child { background: linear-gradient(to top, #1462b5, #429cfb);}
@@ -177,7 +182,7 @@ a{
   padding-left: 8px;
   padding-right: 4px;
 }
-
+                                /*css only for all application*/
 img.ajax_loader{
   visibility: hidden;
   position: fixed;
