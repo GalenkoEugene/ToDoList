@@ -1,3 +1,31 @@
-// Place all the styles related to the Projects controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+div.target_for_project>table.table{
+  min-width: 300px;
+  margin-bottom: 80px;
+  td, th { vertical-align: middle; }
+  thead tr:first-child { background: linear-gradient(to top, #1462b5, #429cfb);}
+  thead tr:nth-child(2) { background: rgb(211,211,211);}
+  th.project_name{
+	  font: bold 130% serif;
+	  text-shadow: 0 0 8px rgba(0,0,0,0.6); 
+	  color: white;
+  }
+}    
+
+div.target_for_project tbody.put_task_inside_me {
+background: white;
+
+tr:last-child td:first-child {border-radius: 0 0 0 10px;}
+tr:last-child td:last-child {border-radius: 0 0 10px 0;}
+	tr:hover{
+	  background-color: #ffe; /* Цвет фона */
+	    .control, .control>a {
+		  color: rgba(176,196,222, 0.8);
+		}
+	}
+}
+.glyphicon-trash:hover{
+	color: rgba(248, 58, 35, 0.5) !important;
+	transition: 0.3s;
+}
+  
+

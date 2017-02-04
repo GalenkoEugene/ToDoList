@@ -19,16 +19,21 @@
 @import "bootstrap";
 
 html body { 
-background: url(bg.jpg) no-repeat center center fixed; 
--webkit-background-size: cover;
--moz-background-size: cover;
--o-background-size: cover;
-background-size: cover;
-}
+  background: url(bg.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  a{
+    color: rgba(176,196,222, 0.8);
+    text-decoration: none!important; 
+  }
+} 
+
 .content{
   margin: auto;
 }
-@media (min-width: 414px) {
+@media (max-width: 414px) {
   .content {
     width: 99vw;
   }
@@ -40,16 +45,12 @@ background-size: cover;
 }
 @media (min-width: 960px) {
   .content {
-    width: 955px;
+    width: 800px;
   }
 }
-@media (min-width: 1200px) {
-  .content {
-    width:  800px;
-  }
-}
-/* header */
-.navbar-default .navbar-nav > li > a > span.glyphicon-log-out{
+
+  /* header - start */
+.glyphicon-log-out{
   color: rgb(245, 0, 0);
   text-shadow: 0 0 4px grey;
   &:hover{
@@ -57,24 +58,21 @@ background-size: cover;
     text-shadow: 0 0 6px red;
   }
 }
-
 ul.navbar-form.navbar-left{
   color: grey;
 }
+  /* header - finish */
 
-/* footer */
-
+  /* footer - start */
 footer {
-	position: absolute;
-   
+	position: absolute; 
     width: 80%;
     left: 10%;
  	height: 25px;
-  
-  /*border-bottom: 1px solid $grayMediumLight;*/
+
   color: #D3D3D3;
   a {
-    color: $gray;
+    color: gray;
     &:hover {
       color: #737373;
     }
@@ -91,49 +89,14 @@ footer {
     }
   }
 }
-                                                      /*pages style*/
+  /* footer - finish */
+                                                      /* pages style */
 .stroked{text-decoration: line-through;}
 .input-group.add_tast_to_project{width: 97%;}
 .input-group.edit_project_name{width: 100%;}
+.inline{display: inline;}
+.select_deadline_field_input{ width: 108px; }
 
-table.table{                                                                 /*tables*/
-  /*min-width: 450px;*/
-  margin-bottom: 80px;
-  }    
-thead tr:first-child { background: linear-gradient(to top, #1462b5, #429cfb);}
-thead tr:nth-child(2) { 
-  background: rgb(211,211,211);
-  border: 0;
-}
-tbody{
-  background: white;
-}
-/*tbody tr td {background: #FFFFFF;}*/
-  tr:last-child td:first-child {border-radius: 0 0 0 10px!important;}
-  tr:last-child td:last-child {border-radius: 0 0 10px 0!important;}
-
-tbody tr:hover{
- background-color: #ffe!important; /* Цвет фона */
-  .control, .control>a{
-    color: rgba(176,196,222, 0.8);
-  }
-}
-th.project_name{                                                          /*for projects name*/
-  font: bold 130% serif;
-  text-shadow: 0 0 8px rgba(0,0,0,0.6); /* Параметры тени */
-  color: white;
-}
-.add_tast_to_project_form{
-  font:  100% serif;
-  text-shadow: 0 0 4px rgba(211,211,211,0.9)
-}
-td.tasks{ /*color of tasks name*/
-  color: rgba(122,156,199, 0.9);
-  text-shadow: 0 0 2px rgba(0,0,0,0.2); /* Параметры тени */
-}
-td, th {
-  vertical-align: middle!important;
-}
 .control, .control>a{
   width: 15px;
   height: 17px;
@@ -143,10 +106,6 @@ td, th {
     color: rgba(122,156,199, 0.8);
   } 
 }
-/*tbody tr.put_task_after_me{
-  background-color: rgba( 211,211,211, 0.5)!important; /* Цвет фона */
-/*}*/
-.inline{display: inline;}
 
 .control_left_side{
   width: 15px;
@@ -155,34 +114,12 @@ td, th {
     vertical-align: middle; 
     color: green;
   }
-  .glyphicon-hourglass{
+  .glyphicon-hourglass{ /* clock */
     padding-left: 3px;
     color: rgba(255,255,255, 0.8);
   }
 }
-.glyphicon.control_right_side{
-  color: rgba(211,211,211, 0.9); 
-}
 
-a{
-  color: rgba(176,196,222, 0.8);
-  text-decoration: none!important; /* Убирает подчеркивание для ссылок */
-} 
-.select_deadline_field_input{
-  width: 108px;
-}
-
-.save_deadline_send_ajax{
-  text-shadow: 1px 1px 2px black, 0 0 1em blue;
-  border-left: 1px solid grey;
-  padding-left: 4px;
-  padding-right: 4px;
-}
-.save_deadline_field{
-  padding-left: 8px;
-  padding-right: 4px;
-}
-                                /*css only for all application*/
 img.ajax_loader{
   visibility: hidden;
   position: fixed;
@@ -194,13 +131,7 @@ img.ajax_loader{
   margin: -15px 0 0 -15px;
 }
 
-.left_days{
-  width: 77px;
-  height: 15px;
-  color: grey;
-  padding-right: 0px!important;
-  padding-left: 1px!important;
-}
-a#add_project{
+a#add_project{ /* button */
   margin-left: calc(50% - 94px);
-}
+  margin-bottom: 50px;
+ } 
