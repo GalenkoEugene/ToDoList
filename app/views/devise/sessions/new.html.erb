@@ -1,7 +1,7 @@
 <div class="device_form">
 
   <h2>Log in</h2>
-  <img id="profile-img" class="profile-img-card" src="http://lorempixel.com/200/220/abstract/">  
+  <%= image_tag("login.jpg", :alt => "Log In", id: "profile-img", class: "profile-img-card") %>  
   <p id="profile-name" class="profile-name-card"></p>    
   <%= form_for(resource, as: resource_name, url: session_path(resource_name), class: "form-signin") do |f| %>
     <span id="reauth-email" class="reauth-email"></span>
