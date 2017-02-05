@@ -1,20 +1,20 @@
     <% provide(:title, 'Home') %>
     <% @projects.each do |project| %>
     <% @project_id = project.id %> <!-- Add Task to direct Project -->
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <th class="control_left_side"><span class="glyphicon glyphicon-hourglass"></span></th>
-          <th colspan="5" class="projects project_name" id= <%="project_name_#{project.id}"%> ><%= project.name %></th>
-          <th class="control"><span class="glyphicon glyphicon-pencil edit_project_name control_right_side" id = <%= @project_id %> ></span></th>
-          <th class="control"><%= link_to '', project, remote: true, class: "glyphicon glyphicon-trash control_right_side", method: :delete, data: { confirm: 'Are you sure?' } %></th>
-        </tr>
-        <%= render 'tasks/form_for_add_task' %>
-      </thead>
-      <tbody class="put_task_inside_me">
-        <%= render 'tasks/form_for_filling_project_by_tasks' %> 
-      </tbody>
-    </table>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th class="control_left_side"><span class="glyphicon glyphicon-hourglass"></span></th>
+            <th colspan="5" class="projects project_name" id= <%="project_name_#{project.id}"%> ><%= project.name %></th>
+            <th class="control"><span class="glyphicon glyphicon-pencil edit_project_name control_right_side" id = <%= @project_id %> ></span></th>
+            <th class="control"><%= link_to '', project, remote: true, class: "glyphicon glyphicon-trash control_right_side", method: :delete, data: { confirm: 'Are you sure?' } %></th>
+          </tr>
+          <%= render 'tasks/form_for_add_task' %>
+        </thead>
+        <tbody class="put_task_inside_me">
+          <%= render 'tasks/form_for_filling_project_by_tasks' %> 
+        </tbody>
+      </table>
     <% end %>
     <%= render 'modal' %>
     <a data-toggle="modal" href="#modal_add_project" class="btn btn-primary btn-lg" id="add_project">Create new Project</a>

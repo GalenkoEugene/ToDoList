@@ -69,22 +69,20 @@ ul.navbar-form.navbar-left{
   /* header - finish */
 
   /* footer - start */
-footer {
+footer.footer {
 	position: absolute; 
-    width: 80%;
-    left: 10%;
+  width: 80%;
+  left: 10%;
  	height: 25px;
+  color: #3c6ca0; 
 
-  color: #D3D3D3;
-  a {
-    color: gray;
+  a{transition: 0.3s;
+    color: grey;
     &:hover {
-      color: #737373;
+      color: #275086;
     }
-  }
-  small {
-    float: left;
-  }
+  }  
+  small { float: left; }
   ul {
     float: right;
     list-style: none;
