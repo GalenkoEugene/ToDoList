@@ -38,6 +38,11 @@ html body {
     width: 99vw;
   }
 }
+@media (min-width: 414px) {
+  .content {
+    width: 98vw;
+  }
+}
 @media (min-width: 768px) {
   .content {
     width: 93vw;

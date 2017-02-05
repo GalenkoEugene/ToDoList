@@ -8,7 +8,7 @@ class TasksController < ApplicationController
     #@tasks = Task.where(project_id: @projects)
     respond_to do |format|
       if @task.save
-        format.html { render :partial => "pages/form_for_filling_project_by_one_task", :locals => { :task => @task } } 
+        format.html { render :partial => "tasks/form_for_filling_project_by_one_task", :locals => { :task => @task } } 
       else
         format.html { head :no_content }
       end

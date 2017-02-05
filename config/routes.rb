@@ -2,16 +2,15 @@ ToDoList::Application.routes.draw do
   devise_for :users
   get 'profile',  to: "persons#profile"
   get 'sql',      to: "pages#sql"
- # get "pages/todolist"
+
   resources :tasks
   resources :projects
-  #resources :pages
+
   post 'tasks/editTaskStatus',      to: 'tasks#editTaskStatus'#, as: 'editTaskStatus' 
   post 'projects/editProjectName',  to: 'projects#editProjectName'
   post 'tasks/editTaskName',        to: 'tasks#editTaskName'
   post 'tasks/setDeadline/',        to: 'tasks#setDeadline'
   post 'tasks/swapTasks',           to: 'tasks#swapTasks'
-  #post 'tasks/new',                 to: 'tasks#new', rating: Time.now
   
   match '/todolist', to: 'pages#todolist', via: 'get'
   # The priority is based upon order of creation: first created -> highest priority.

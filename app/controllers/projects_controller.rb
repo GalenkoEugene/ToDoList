@@ -8,7 +8,7 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       if @project.save
-        format.html { render :partial => "pages/project_tables", :locals => { :project => @project } } 
+        format.html { render :partial => "projects/show_project", :locals => { :project => @project } } 
         #format.json { render action: 'show', status: :created, location: @project }
       else
         format.html { render html: "Error, can not save... reload page and try again" }
