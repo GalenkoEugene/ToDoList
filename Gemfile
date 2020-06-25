@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 ruby '2.3.7'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '5.0.1'
-gem 'bootstrap-sass', '3.3.7'
+gem 'bootstrap-sass', '3.4.1'
 gem 'slim-rails', '3.1.1'
 gem 'rails-controller-testing', '1.0.1'
 
