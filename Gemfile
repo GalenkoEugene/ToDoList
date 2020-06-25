@@ -36,7 +36,7 @@ gem 'bootstrap-datepicker-rails', '1.6.4.1'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '2.6.1'
-gem 'devise', '4.2.0'
+gem 'devise', '4.7.1'
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
